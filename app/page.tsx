@@ -1,4 +1,3 @@
-import { AnimatedCursor } from "@/components/AnimatedCursor";
 import { Navbar } from "@/components/Navbar";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { SmoothScrollProvider } from "@/components/SmoothScrollProvider";
@@ -14,7 +13,6 @@ export default function Home() {
   return (
     <SmoothScrollProvider>
       <ScrollProgress />
-      <AnimatedCursor />
       <Navbar />
       <main>
         <HeroSection />

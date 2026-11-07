@@ -9,22 +9,29 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        void: "#050407",
-        ink: "#090711",
-        amethyst: "#8b5cf6",
-        ultraviolet: "#a855f7",
-        pearl: "#f4f0ff",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        border: "hsl(var(--border))",
+        ring: "hsl(var(--ring))",
+        void: "#fcfaf6",
+        ink: "#24323a",
+        amethyst: "#7d7198",
+        ultraviolet: "#9bb6c9",
+        pearl: "#24323a",
       },
       fontFamily: {
         sans: ["var(--font-inter)", "ui-sans-serif", "system-ui", "sans-serif"],
         display: ["var(--font-space-grotesk)", "ui-sans-serif", "system-ui", "sans-serif"],
       },
       boxShadow: {
-        neon: "0 0 40px rgba(168, 85, 247, 0.32)",
-        panel: "0 30px 90px rgba(0, 0, 0, 0.45)",
+        neon: "0 0 40px rgba(214, 255, 75, 0.16)",
+        panel: "12px 12px 0 rgba(23, 24, 22, 0.08)",
+      },
+      outlineColor: {
+        ring: "hsl(var(--ring))",
       },
       backgroundImage: {
-        "radial-purple": "radial-gradient(circle at center, rgba(168, 85, 247, 0.22), transparent 48%)",
+        "radial-purple": "radial-gradient(circle at center, rgba(214, 255, 75, 0.12), transparent 48%)",
       },
     },
   },

@@ -9,8 +9,8 @@ export function ExperienceSection() {
       <SectionAura />
       <div className="container-pad">
         <ScrollReveal>
-          <SectionHeader eyebrow="Experience" title="Enterprise experience across real internal systems.">
-            Hands-on internship work spanning APIs, dashboards, database integration, containerized workflows, and delivery automation.
+          <SectionHeader eyebrow="Experience" title="Experience that connects engineering to operations.">
+            Hands-on work across enterprise systems, plus independent product building through LKNEX Studio.
           </SectionHeader>
         </ScrollReveal>
 
@@ -21,13 +21,13 @@ export function ExperienceSection() {
               key={item.company}
               className="glass-line relative overflow-hidden rounded-2xl p-6 shadow-panel sm:p-8"
             >
-              <div aria-hidden="true" className="absolute left-0 top-0 h-full w-px bg-gradient-to-b from-purple-200/60 via-purple-200/10 to-transparent" />
+              <div aria-hidden="true" className="absolute left-0 top-0 h-full w-px bg-gradient-to-b from-lime-300/70 via-lime-300/10 to-transparent" />
               <div className="flex flex-col gap-5 md:flex-row md:items-start md:justify-between">
                 <div>
                   <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-purple-300/[0.12] text-purple-100">
                     <BriefcaseBusiness size={22} />
                   </div>
-                  <p className="text-sm uppercase tracking-[0.22em] text-purple-200/75">{item.period}</p>
+                  <p className="text-sm uppercase tracking-[0.22em] text-lime-300/75">{item.period}</p>
                   <h3 className="mt-3 font-display text-2xl font-semibold text-white">{item.role}</h3>
                   <p className="mt-2 text-white/[0.58]">{item.company}</p>
                 </div>

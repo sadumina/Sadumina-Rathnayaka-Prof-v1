@@ -89,7 +89,7 @@ export function SkillsSection() {
   return (
     <section id="skills" className="section-pad relative">
       <div className="container-pad">
-        <SectionHeader eyebrow="Skills" title="A modern stack for product-grade engineering.">
+        <SectionHeader eyebrow="Tech Stack" title="A modern stack for product-grade engineering.">
           Technologies grouped by where they create value: interfaces, services, databases, delivery, and AI-enabled systems.
         </SectionHeader>
 

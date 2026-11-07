@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 500">
+  <rect width="160" height="500" fill="#24323a"/>
+  <path d="M0 0h160v500H0z" fill="#7d7198" opacity=".35"/>
+  <text x="80" y="250" fill="#fcfaf6" font-family="monospace" font-size="14" letter-spacing="3" text-anchor="middle" transform="rotate(90 80 250)">LKNEX STUDIO</text>
+</svg>

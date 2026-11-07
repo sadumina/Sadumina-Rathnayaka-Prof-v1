@@ -15,17 +15,17 @@ export function ScrollReveal({
   children,
   className,
   delay = 0,
-  y = 28,
+  y = 36,
   as = "div",
 }: ScrollRevealProps) {
   const Component = as === "article" ? motion.article : motion.div;
 
   return (
     <Component
-      initial={{ opacity: 0, y, filter: "blur(8px)" }}
+      initial={{ opacity: 0, y, filter: "blur(10px)" }}
       whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
       viewport={{ once: true, amount: 0.22 }}
-      transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1], delay }}
+      transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1], delay }}
       className={className}
     >
       {children}

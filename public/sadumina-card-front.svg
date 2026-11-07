@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 900">
+  <rect width="640" height="900" fill="#fcfaf6"/>
+  <path d="M36 36h568v828H36z" fill="none" stroke="#24323a" stroke-width="2"/>
+  <path d="M36 622h568" stroke="#24323a" stroke-width="2"/>
+  <path d="M36 72h568M568 36v586" stroke="#7d7198" stroke-width="1" opacity=".55"/>
+  <rect x="64" y="106" width="512" height="430" fill="#e7eef5"/>
+  <image href="/sadumina-card-front.jpe" x="64" y="106" width="512" height="430" preserveAspectRatio="xMidYMid slice"/>
+  <rect x="64" y="106" width="512" height="430" fill="#24323a" opacity=".06"/>
+  <circle cx="92" cy="134" r="13" fill="#c7ddd4"/>
+  <text x="120" y="141" fill="#24323a" font-family="monospace" font-size="13" letter-spacing="2">PROFILE / 01</text>
+  <text x="64" y="674" fill="#24323a" font-family="Arial, sans-serif" font-size="42" font-weight="700">Sadumina</text>
+  <text x="64" y="720" fill="#24323a" font-family="Arial, sans-serif" font-size="42" font-weight="700">Rathnayaka</text>
+  <text x="64" y="764" fill="#7d7198" font-family="monospace" font-size="15" font-weight="700" letter-spacing="2">SOFTWARE ENGINEER</text>
+  <text x="64" y="814" fill="#6f7a7d" font-family="monospace" font-size="13">REACT  /  FASTAPI  /  PYTHON  /  ML</text>
+  <text x="64" y="846" fill="#6f7a7d" font-family="monospace" font-size="12">LKNEX STUDIO · SRI LANKA</text>
+  <text x="566" y="846" fill="#24323a" font-family="monospace" font-size="12" text-anchor="end">SR—01</text>
+</svg>

@@ -5,15 +5,15 @@ export const navLinks = [
   { href: "#about", label: "About" },
   { href: "#experience", label: "Experience" },
   { href: "#projects", label: "Projects" },
-  { href: "#skills", label: "Skills" },
+  { href: "#skills", label: "Tech Stack" },
   { href: "#contact", label: "Contact" },
 ];
 
 export const stats = [
-  { value: "8+", label: "Months Experience" },
-  { value: "10+", label: "Projects" },
-  { value: "15+", label: "Technologies" },
-  { value: "1", label: "Internship" },
+  { value: "8+", label: "Months in industry" },
+  { value: "10+", label: "Products shipped" },
+  { value: "5", label: "Core disciplines" },
+  { value: "1", label: "Studio founded" },
 ];
 
 export const experiences: ExperienceItem[] = [
@@ -51,8 +51,8 @@ export const skillGroups: SkillGroup[] = [
     skills: ["Docker", "GitHub Actions", "AWS"],
   },
   {
-    title: "AI & APIs",
-    skills: ["OpenAI API", "REST APIs", "API Design"],
+    title: "Systems & APIs",
+    skills: ["REST APIs", "API Design", "AWS", "GitHub Actions"],
   },
 ];
 

@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
-import { MusicToggle } from "@/components/MusicToggle";
 import "./globals.css";
+import { Inter } from "next/font/google";
+import { cn } from "@/lib/utils";
+
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
   title: "Sadumina Rathnayaka | Software Engineer",
   description:
-    "Professional portfolio of Sadumina Rathnayaka, a full stack software engineer building scalable software, AI-powered systems, and enterprise solutions.",
+    "Portfolio of Sadumina Rathnayaka, a full stack software engineer building reliable products, cloud systems, and practical AI features.",
   keywords: [
     "Sadumina Rathnayaka",
     "Software Engineer",
@@ -13,7 +16,8 @@ export const metadata: Metadata = {
     "Next.js",
     "FastAPI",
     "React",
-    "AI Systems",
+    "Cloud Engineering",
+    "Applied AI",
   ],
   authors: [{ name: "Sadumina Rathnayaka" }],
   creator: "Sadumina Rathnayaka",
@@ -32,10 +36,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={cn(inter.variable)}>
       <body>
         {children}
-        <MusicToggle />
       </body>
     </html>
   );

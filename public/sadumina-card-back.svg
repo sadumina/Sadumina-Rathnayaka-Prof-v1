@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 900">
+  <rect width="640" height="900" fill="#24323a"/>
+  <circle cx="520" cy="120" r="180" fill="#7d7198" opacity=".8"/>
+  <circle cx="80" cy="800" r="220" fill="#c7ddd4" opacity=".9"/>
+  <path d="M0 280 640 120M0 340 640 180" stroke="#fcfaf6" stroke-width="2" opacity=".25"/>
+  <text x="64" y="106" fill="#fcfaf6" font-family="Arial, sans-serif" font-size="22" letter-spacing="5">SR / LKNEX</text>
+  <text x="64" y="690" fill="#fcfaf6" font-family="Arial, sans-serif" font-size="38" font-weight="700">Sadumina</text>
+  <text x="64" y="740" fill="#fcfaf6" font-family="Arial, sans-serif" font-size="38" font-weight="700">Rathnayaka</text>
+  <text x="64" y="790" fill="#dcece4" font-family="Arial, sans-serif" font-size="18" letter-spacing="3">SOFTWARE ENGINEER</text>
+  <text x="64" y="842" fill="#e8e1f1" font-family="monospace" font-size="14">thoughtful software / useful by design</text>
+</svg>

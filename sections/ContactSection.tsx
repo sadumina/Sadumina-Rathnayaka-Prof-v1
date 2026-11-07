@@ -10,7 +10,7 @@ export function ContactSection() {
         <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
           <ScrollReveal>
             <SectionHeader eyebrow="Contact" title="Let's build something useful and polished.">
-              Open to software engineering roles, internships, collaborations, and full stack product opportunities.
+              Open to software engineering roles, collaborations, and product work through LKNEX Studio.
             </SectionHeader>
           </ScrollReveal>
 
@@ -46,6 +46,15 @@ export function ContactSection() {
                 LinkedIn
               </a>
             </div>
+            <a
+              href="https://www.lknexstudio.tech/"
+              target="_blank"
+              rel="noreferrer"
+              className="mt-4 flex items-center justify-between rounded-2xl border border-lime-300/20 bg-lime-300/[0.05] px-5 py-4 text-sm font-semibold text-lime-100 transition hover:border-lime-300/50 hover:bg-lime-300/[0.1]"
+            >
+              <span>LKNEX Studio</span>
+              <span aria-hidden="true">Visit company site ↗</span>
+            </a>
           </ScrollReveal>
         </div>
       </div>
