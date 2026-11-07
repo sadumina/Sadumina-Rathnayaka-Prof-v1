@@ -54,6 +54,10 @@ export const skillGroups: SkillGroup[] = [
     title: "Systems & APIs",
     skills: ["REST APIs", "API Design", "AWS", "GitHub Actions"],
   },
+  {
+    title: "AI / ML",
+    skills: ["Python", "TensorFlow", "PyTorch", "OpenCV", "CNN", "AI APIs"],
+  },
 ];
 
 export const projects: ProjectItem[] = [
