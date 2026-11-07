@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900">
+  <rect width="900" height="900" fill="#e9eef5"/>
+  <circle cx="720" cy="150" r="220" fill="#c8d8e7"/>
+  <rect x="105" y="115" width="690" height="670" rx="28" fill="#fcfaf6" stroke="#24323a" stroke-opacity=".16" stroke-width="4"/>
+  <text x="155" y="205" fill="#24323a" font-family="Arial, sans-serif" font-size="54" font-weight="700">EduSense</text>
+  <text x="155" y="250" fill="#7d7198" font-family="Arial, sans-serif" font-size="22" letter-spacing="4">LEARNING INTELLIGENCE</text>
+  <rect x="155" y="330" width="255" height="190" rx="18" fill="#dcece4"/>
+  <path d="M190 465 C240 420 275 445 320 375 C350 330 380 390 390 350" fill="none" stroke="#5f9388" stroke-width="12"/>
+  <circle cx="390" cy="350" r="13" fill="#5f9388"/>
+  <rect x="455" y="330" width="255" height="190" rx="18" fill="#eeeaf3"/>
+  <text x="490" y="390" fill="#7d7198" font-family="Arial, sans-serif" font-size="20">AI INSIGHT</text>
+  <text x="490" y="455" fill="#24323a" font-family="Arial, sans-serif" font-size="48" font-weight="700">84%</text>
+  <rect x="155" y="590" width="555" height="18" rx="9" fill="#d9d3df"/>
+  <rect x="155" y="590" width="390" height="18" rx="9" fill="#7d7198"/>
+  <text x="155" y="690" fill="#6f7a7d" font-family="Arial, sans-serif" font-size="24">Dashboards · APIs · Personalised signals</text>
+</svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900">
+  <rect width="900" height="900" fill="#f3e9e1"/>
+  <circle cx="170" cy="150" r="230" fill="#ead2c1"/>
+  <rect x="105" y="115" width="690" height="670" rx="28" fill="#fcfaf6" stroke="#24323a" stroke-opacity=".16" stroke-width="4"/>
+  <text x="155" y="205" fill="#24323a" font-family="Arial, sans-serif" font-size="43" font-weight="700">Retina AI</text>
+  <text x="155" y="250" fill="#b18d73" font-family="Arial, sans-serif" font-size="20" letter-spacing="3">DEEP LEARNING SCREENING</text>
+  <circle cx="430" cy="475" r="175" fill="#ead2c1"/>
+  <circle cx="430" cy="475" r="118" fill="#d9957e"/>
+  <circle cx="430" cy="475" r="42" fill="#24323a"/>
+  <path d="M300 430 C350 340 430 330 525 385 M315 535 C390 590 490 585 555 500" fill="none" stroke="#8f5446" stroke-width="10" opacity=".8"/>
+  <rect x="155" y="690" width="185" height="44" rx="22" fill="#f0d7c8"/>
+  <text x="188" y="719" fill="#8f5446" font-family="Arial, sans-serif" font-size="18">CNN MODELS</text>
+  <rect x="365" y="690" width="190" height="44" rx="22" fill="#eeeaf3"/>
+  <text x="394" y="719" fill="#7d7198" font-family="Arial, sans-serif" font-size="18">COMPUTER VISION</text>
+</svg>

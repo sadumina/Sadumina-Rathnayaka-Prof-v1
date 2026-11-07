@@ -1,18 +1,78 @@
-import { SectionHeader } from "@/components/SectionHeader";
 import { ScrollReveal, SectionAura } from "@/components/ScrollReveal";
+import ParticleText from "@/components/ParticleText";
+import GridScan from "@/components/GridScan";
 import { projects } from "@/lib/data";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 
 export function ProjectsSection() {
   return (
-    <section id="projects" className="section-pad relative overflow-hidden bg-black/20">
+    <section id="projects" className="section-pad relative overflow-hidden bg-[#fcfaf6]">
       <SectionAura side="left" />
-      <div className="container-pad">
+      <div aria-hidden="true" className="absolute inset-0 opacity-20">
+        <GridScan
+          linesColor="#000000"
+          scanColor="#f43f5e"
+          cells={8}
+          depth={3}
+          scanDuration={2.4}
+          scanDelay={1.6}
+          clickEffect="ping"
+          lineThickness={1}
+          lineStyle="solid"
+          depthFade={0.6}
+          shading={0.7}
+          reflection={0.35}
+          points
+          scanDirection="forward"
+          scanWidth={1}
+          trail={0.5}
+          glow={0.6}
+          parallax={1}
+          autoScan
+          interactive
+          enableWebcam={false}
+          showPreview
+          intro
+          lightMode={false}
+        />
+      </div>
+      <div className="container-pad relative z-10">
         <ScrollReveal>
-          <SectionHeader eyebrow="Projects" title="Selected systems with practical product intent.">
-            A focused collection of software projects across AI, analytics, business operations, computer vision, and management systems.
-          </SectionHeader>
+          <div className="mb-12">
+            <div className="mb-5 flex items-center gap-4">
+              <span aria-hidden="true" className="h-px w-14 bg-[#24323a] sm:w-20" />
+              <p className="text-xs font-semibold uppercase tracking-[0.34em] text-[#7d7198]">Projects</p>
+            </div>
+            <div className="relative -mx-4 h-[190px] w-[calc(100%+2rem)] sm:h-[230px] md:-mx-8 md:w-[calc(100%+4rem)]">
+              <ParticleText
+                text="Selected systems with practical product intent."
+                particleSize={3.2}
+                density={2.8}
+                color="#24323a"
+                highlightColor="#7d7198"
+                highlightMode="motion"
+                shape="circle"
+                intro="gather"
+                scatter={190}
+                gatherDuration={1600}
+                stagger={420}
+                clickBurst
+                burstStrength={1}
+                pointerRepel={42}
+                repelRadius={120}
+                idleDrift={0.8}
+                trigger="mount"
+                fontSize="clamp(2.5rem, 8vw, 6rem)"
+                fontWeight={800}
+                fontFamily="inherit"
+                glow
+              />
+            </div>
+            <p className="mt-2 max-w-3xl text-base leading-8 text-[#6f7a7d] sm:text-lg">
+              A focused collection of software projects across AI, analytics, business operations, computer vision, and management systems.
+            </p>
+          </div>
         </ScrollReveal>
 
         <div className="grid gap-5 lg:grid-cols-2">

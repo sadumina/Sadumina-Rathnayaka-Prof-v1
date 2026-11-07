@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900">
+  <rect width="900" height="900" fill="#e5f0ec"/>
+  <path d="M0 640 C180 510 260 720 430 570 S700 480 900 610 V900 H0Z" fill="#c7ddd4"/>
+  <rect x="105" y="115" width="690" height="670" rx="28" fill="#fcfaf6" stroke="#24323a" stroke-opacity=".16" stroke-width="4"/>
+  <text x="155" y="205" fill="#24323a" font-family="Arial, sans-serif" font-size="48" font-weight="700">Risk Map</text>
+  <text x="155" y="250" fill="#5f9388" font-family="Arial, sans-serif" font-size="20" letter-spacing="3">PREDICTIVE GEOSPATIAL AI</text>
+  <path d="M180 390 L300 320 L410 385 L520 300 L690 390 L600 510 L470 465 L340 555 L210 490 Z" fill="#dcece4" stroke="#5f9388" stroke-width="8"/>
+  <path d="M260 370 L345 420 L430 350 L535 420 L625 375 M300 505 L365 430 L470 465 L520 400" fill="none" stroke="#8db5a8" stroke-width="7"/>
+  <circle cx="345" cy="420" r="23" fill="#b18d73"/>
+  <circle cx="535" cy="420" r="23" fill="#7d7198"/>
+  <text x="155" y="690" fill="#6f7a7d" font-family="Arial, sans-serif" font-size="24">Flood zones · Landslide signals · Live layers</text>
+</svg>
