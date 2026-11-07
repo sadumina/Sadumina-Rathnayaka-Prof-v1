@@ -64,6 +64,14 @@ export function Navbar() {
         >
           Contact
         </a>
+        <a
+          href="/Sadumina-Rathnayaka-Resume.pdf"
+          target="_blank"
+          rel="noreferrer"
+          className="hidden border border-[#7d7198]/40 px-5 py-2.5 text-[10px] font-semibold uppercase tracking-[0.22em] text-[#7d7198] transition hover:border-[#24323a] hover:text-[#24323a] lg:inline-flex"
+        >
+          Résumé
+        </a>
 
         <button
           type="button"
@@ -102,6 +110,15 @@ export function Navbar() {
               className="flex items-center justify-between px-4 py-3 text-sm font-medium uppercase tracking-[0.18em] text-[#17212b]"
             >
               LKNEX Studio <ArrowUpRight size={15} />
+            </a>
+            <a
+              href="/Sadumina-Rathnayaka-Resume.pdf"
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => setOpen(false)}
+              className="flex items-center justify-between border-t border-black/10 px-4 py-3 text-sm font-medium uppercase tracking-[0.18em] text-[#7d7198]"
+            >
+              View résumé <ArrowUpRight size={15} />
             </a>
           </div>
         </div>

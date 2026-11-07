@@ -38,6 +38,13 @@ export function ContactSection() {
               >
                 Start a conversation <ArrowUpRight size={17} />
               </a>
+              <a
+                href="/Sadumina-Rathnayaka-Resume.pdf"
+                download="Sadumina-Rathnayaka-Resume.pdf"
+                className="ml-5 inline-flex items-center gap-3 text-sm font-semibold text-[#6f7a7d] transition hover:text-[#24323a]"
+              >
+                Download résumé <ArrowUpRight size={17} />
+              </a>
             </div>
           </ScrollReveal>
 

@@ -88,6 +88,9 @@ export function AboutSection() {
               <a href="https://www.lknexstudio.tech/" target="_blank" rel="noreferrer" className="text-[#6f7a7d] transition hover:text-[#24323a]">
                 LKNEX Studio <span aria-hidden="true">↗</span>
               </a>
+              <a href="/Sadumina-Rathnayaka-Resume.pdf" target="_blank" rel="noreferrer" className="text-[#6f7a7d] transition hover:text-[#24323a]">
+                View résumé <span aria-hidden="true">↗</span>
+              </a>
             </div>
           </ScrollReveal>
         </div>
