@@ -52,8 +52,8 @@ const featuredProjects = [
     cluster: "Deep Learning",
     description: "A screening system that compares four CNN models for diabetic retinopathy detection from retinal images.",
     stack: ["Python", "CNN", "PyTorch"],
-    href: "https://github.com/sadumina/Deep-Learning-Assignment-Group-ID-SE4050-G05.git",
-    external: true,
+    href: "/projects/diabetic-retinopathy-screening",
+    external: false,
   },
   {
     title: "Predictive Risk Map",

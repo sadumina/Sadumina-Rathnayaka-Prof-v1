@@ -16,9 +16,11 @@ import { CarbonXInsightGraph } from "@/components/CarbonXInsightGraph";
 import { CarbonXBentoStack } from "@/components/CarbonXBentoStack";
 import { CarbonXImpactChallenges } from "@/components/CarbonXImpactChallenges";
 import { CarbonXInsightDashboard } from "@/components/CarbonXInsightDashboard";
+import { RetinopathyCaseStudy } from "@/components/RetinopathyCaseStudy";
 import { cn } from "@/lib/utils";
 import type { ProjectItem } from "@/types/portfolio";
 import { projects } from "@/lib/data";
+import Image from "next/image";
 import {
   ArrowLeft,
   ArrowRight,
@@ -75,6 +77,7 @@ export function ProjectDetailPage({ project }: { project: ProjectItem }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const currentIndex = projects.findIndex((p) => p.slug === project.slug);
   const nextProject = projects[(currentIndex + 1) % projects.length];
+  const isRetinopathy = project.slug === "diabetic-retinopathy-screening";
 
   // AnimatedBeam node references
   const centerCoreRef = useRef<HTMLDivElement>(null);
@@ -105,7 +108,7 @@ export function ProjectDetailPage({ project }: { project: ProjectItem }) {
               Back to Projects
             </Link>
 
-            {project.slug === "edusense" || project.slug === "carbonxinsight" ? (
+            {project.slug === "edusense" || project.slug === "carbonxinsight" || isRetinopathy ? (
               <div className="flex flex-col items-center justify-center pt-2 text-center">
                 {/* Category & Status Pill */}
                 <motion.div
@@ -143,7 +146,9 @@ export function ProjectDetailPage({ project }: { project: ProjectItem }) {
                   <p className="font-mono text-xs font-semibold uppercase tracking-[0.26em] text-[#65707a]">
                     {project.slug === "carbonxinsight"
                       ? "Coconut shell charcoal market price analytics"
-                      : "AI-powered student productivity platform"}
+                      : isRetinopathy
+                        ? "Automated retinal fundus image severity classification"
+                        : "AI-powered student productivity platform"}
                   </p>
                   <span className="h-px w-8 bg-[#7d7198]/40 sm:w-12" />
                 </div>
@@ -158,21 +163,37 @@ export function ProjectDetailPage({ project }: { project: ProjectItem }) {
                   <div className="px-4 py-2 text-center">
                     <p className="font-mono text-[9px] font-semibold uppercase tracking-wider text-[#7d7198]">Role</p>
                     <p className="text-xs font-semibold text-[#24323a]">
-                      {project.slug === "carbonxinsight" ? "Software Engineering Intern" : "Full-Stack & AI"}
+                      {project.slug === "carbonxinsight"
+                        ? "Software Engineering Intern"
+                        : isRetinopathy
+                          ? "Deep Learning Team"
+                          : "Full-Stack & AI"}
                     </p>
                   </div>
                   <div className="px-4 py-2 text-center">
                     <p className="font-mono text-[9px] font-semibold uppercase tracking-wider text-[#7d7198]">Core Stack</p>
                     <p className="text-xs font-semibold text-[#24323a]">
-                      {project.slug === "carbonxinsight" ? "FastAPI · React 19 · MongoDB" : "Next.js 16 · FastAPI · MongoDB"}
+                      {project.slug === "carbonxinsight"
+                        ? "FastAPI · React 19 · MongoDB"
+                        : isRetinopathy
+                          ? "Python · TensorFlow · PyTorch"
+                          : "Next.js 16 · FastAPI · MongoDB"}
                     </p>
                   </div>
                   <div className="px-4 py-2 text-center">
                     <p className="font-mono text-[9px] font-semibold uppercase tracking-wider text-[#7d7198]">
-                      {project.slug === "carbonxinsight" ? "Analytics Engine" : "AI Pipeline"}
+                      {project.slug === "carbonxinsight"
+                        ? "Analytics Engine"
+                        : isRetinopathy
+                          ? "Model Comparison"
+                          : "AI Pipeline"}
                     </p>
                     <p className="text-xs font-semibold text-[#24323a]">
-                      {project.slug === "carbonxinsight" ? "Highstock · pdfplumber" : "Gemini + Groq LPU"}
+                      {project.slug === "carbonxinsight"
+                        ? "Highstock · pdfplumber"
+                        : isRetinopathy
+                          ? "4 CNN Architectures"
+                          : "Gemini + Groq LPU"}
                     </p>
                   </div>
                   <div className="px-4 py-2 text-center">
@@ -180,7 +201,11 @@ export function ProjectDetailPage({ project }: { project: ProjectItem }) {
                       {project.slug === "carbonxinsight" ? "Client" : "Status"}
                     </p>
                     <p className="text-xs font-semibold text-emerald-600">
-                      {project.slug === "carbonxinsight" ? "Haycarb PLC" : "Production Ready"}
+                      {project.slug === "carbonxinsight"
+                        ? "Haycarb PLC"
+                        : isRetinopathy
+                          ? "In Progress"
+                          : "Production Ready"}
                     </p>
                   </div>
                 </motion.div>
@@ -224,7 +249,7 @@ export function ProjectDetailPage({ project }: { project: ProjectItem }) {
                     className="inline-flex items-center justify-center gap-2 border border-[#7d7198]/40 bg-white px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-[#7d7198] transition-all duration-200 hover:border-[#24323a] hover:text-[#24323a]"
                   >
                     <Cpu size={15} />
-                    <span>Architecture</span>
+                    <span>{isRetinopathy ? "Model Comparison" : "Architecture"}</span>
                   </a>
                 </motion.div>
               </div>
@@ -269,20 +294,33 @@ export function ProjectDetailPage({ project }: { project: ProjectItem }) {
                 <div className="relative overflow-hidden rounded-2xl border border-[#d9d3df] bg-white p-5 shadow-[10px_10px_0_rgba(70,58,86,0.08)]">
                   <div className="absolute right-0 top-0 h-48 w-48 translate-x-12 -translate-y-12 rounded-full bg-[#e8e1f1] blur-3xl" />
                   <div className="relative aspect-[16/10] overflow-hidden rounded-xl border border-[#d9d3df] bg-[#f7f4fa]">
-                    <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(232,225,241,0.72),transparent_42%),radial-gradient(circle_at_70%_30%,rgba(255,255,255,0.9),transparent_18%)]" />
-                    <div className="absolute inset-x-6 top-6 flex items-center gap-2">
-                      <span className="h-3 w-3 rounded-full bg-[#c7ddd4]" />
-                      <span className="h-3 w-3 rounded-full bg-[#d9d3df]" />
-                      <span className="h-3 w-3 rounded-full bg-[#e8e1f1]" />
-                    </div>
-                    <div className="absolute bottom-6 left-6 right-6">
-                      <p className="font-mono text-xs uppercase tracking-[0.22em] text-[#7d7198]">
-                        Case Study Preview
-                      </p>
-                      <p className="mt-3 font-display text-2xl font-semibold text-[#24323a]">
-                        {project.title}
-                      </p>
-                    </div>
+                    {isRetinopathy ? (
+                      <Image
+                        src="/project-retinopathy.svg"
+                        alt="Illustration of the diabetic retinopathy screening project"
+                        fill
+                        priority
+                        sizes="(max-width: 1024px) 100vw, 50vw"
+                        className="object-cover"
+                      />
+                    ) : (
+                      <>
+                        <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(232,225,241,0.72),transparent_42%),radial-gradient(circle_at_70%_30%,rgba(255,255,255,0.9),transparent_18%)]" />
+                        <div className="absolute inset-x-6 top-6 flex items-center gap-2">
+                          <span className="h-3 w-3 rounded-full bg-[#c7ddd4]" />
+                          <span className="h-3 w-3 rounded-full bg-[#d9d3df]" />
+                          <span className="h-3 w-3 rounded-full bg-[#e8e1f1]" />
+                        </div>
+                        <div className="absolute bottom-6 left-6 right-6">
+                          <p className="font-mono text-xs uppercase tracking-[0.22em] text-[#7d7198]">
+                            Case Study Preview
+                          </p>
+                          <p className="mt-3 font-display text-2xl font-semibold text-[#24323a]">
+                            {project.title}
+                          </p>
+                        </div>
+                      </>
+                    )}
                   </div>
                 </div>
               </div>
@@ -503,6 +541,8 @@ export function ProjectDetailPage({ project }: { project: ProjectItem }) {
             </div>
           </section>
         )}
+
+        {isRetinopathy && <RetinopathyCaseStudy project={project} />}
 
         {/* Dynamic Next Project Feature Card */}
         <section className="section-pad pt-4 pb-20">

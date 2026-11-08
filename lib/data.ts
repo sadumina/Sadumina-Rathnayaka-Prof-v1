@@ -111,6 +111,36 @@ export const projects: ProjectItem[] = [
     demoUrl: "#",
   },
   {
+    slug: "diabetic-retinopathy-screening",
+    title: "Diabetic Retinopathy Screening",
+    category: "Deep Learning · Medical Imaging",
+    description:
+      "A comparative deep-learning study of four convolutional neural network architectures for classifying diabetic retinopathy severity from retinal fundus images.",
+    stack: ["Python", "TensorFlow", "PyTorch", "CNN"],
+    problem:
+      "Manual grading of retinal images is time-intensive and depends on access to eye-care specialists. This project investigates automated classification across five diabetic retinopathy severity stages.",
+    solution:
+      "The team compares a custom CNN with DenseNet121, EfficientNetB0, and ResNet50 using retinal-image preprocessing, class weighting, held-out evaluation, and Grad-CAM visualizations.",
+    impact: [
+      "Compares four model architectures under a shared experimental workflow",
+      "Accounts for the ordinal severity scale with Quadratic Weighted Kappa",
+      "Includes Grad-CAM visualizations to inspect image regions influencing predictions",
+    ],
+    features: [
+      "Five-class diabetic retinopathy severity classification",
+      "APTOS 2019 fundus-image dataset",
+      "Preprocessing, class weighting, and stratified data splits",
+      "Comparative metrics and Grad-CAM explainability",
+    ],
+    screenshots: [
+      { title: "Model Comparison", description: "Four CNN architectures evaluated for retinal-image severity classification." },
+      { title: "Grad-CAM Explainability", description: "Visualizations used to inspect image regions that influence model predictions." },
+    ],
+    githubUrl:
+      "https://github.com/sadumina/Deep-Learning-Assignment-Group-ID-SE4050-G05/tree/Finalize-Models",
+    demoUrl: "#",
+  },
+  {
     slug: "clever-campus",
     title: "Clever Campus",
     category: "Campus Management",
