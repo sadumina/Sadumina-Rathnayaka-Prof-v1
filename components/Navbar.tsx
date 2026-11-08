@@ -2,10 +2,12 @@
 
 import { navLinks } from "@/lib/data";
 import { cn } from "@/lib/utils";
+import { usePathname } from "next/navigation";
 import { ArrowUpRight, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
 export function Navbar() {
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const compactLinks = navLinks.filter((link) =>
@@ -29,8 +31,12 @@ export function Navbar() {
       )}
     >
       <nav className="container-pad flex h-[72px] items-center justify-between" aria-label="Primary navigation">
-        <a href="#home" className="group flex items-center gap-3" aria-label="Sadumina Rathnayaka home">
-          <span className="flex h-8 w-8 items-center justify-center rounded-full border border-[#17212b] font-display text-[11px] font-bold tracking-[-0.08em] text-[#17212b] transition group-hover:bg-[#17212b] group-hover:text-white">
+        <a
+          href={pathname === "/" ? "#home" : "/#home"}
+          className="group flex items-center gap-3"
+          aria-label="Return to Sadumina Rathnayaka portfolio home"
+        >
+          <span className="flex h-8 w-8 items-center justify-center rounded-full border border-[#17212b] font-display text-[11px] font-bold tracking-[-0.08em] text-[#17212b] transition-colors group-hover:border-[#c7ddd4] group-hover:bg-[#c7ddd4] group-hover:text-[#24323a] group-focus-visible:border-[#c7ddd4] group-focus-visible:bg-[#c7ddd4] group-focus-visible:text-[#24323a]">
             SR
           </span>
           <span className="hidden text-[10px] font-semibold uppercase tracking-[0.18em] text-[#65707a] sm:block">
