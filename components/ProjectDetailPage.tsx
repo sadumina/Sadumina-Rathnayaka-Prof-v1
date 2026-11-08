@@ -7,11 +7,15 @@ import { SmoothScrollProvider } from "@/components/SmoothScrollProvider";
 import TechText from "@/components/TechText";
 import DecryptedText from "@/components/DecryptedText";
 import TrueFocus from "@/components/TrueFocus";
-import DotField from "@/components/DotField"; // Adjust path if DotField is located elsewhere
+import DotField from "@/components/DotField";
 import { ScrollReveal, SectionAura } from "@/components/ScrollReveal";
 import { AnimatedBeam } from "@/components/ui/animated-beam";
 import { EduSenseBentoStack } from "@/components/EduSenseBentoStack";
 import { EduSenseImpactChallenges } from "@/components/EduSenseImpactChallenges";
+import { CarbonXInsightGraph } from "@/components/CarbonXInsightGraph";
+import { CarbonXBentoStack } from "@/components/CarbonXBentoStack";
+import { CarbonXImpactChallenges } from "@/components/CarbonXImpactChallenges";
+import { CarbonXInsightDashboard } from "@/components/CarbonXInsightDashboard";
 import { cn } from "@/lib/utils";
 import type { ProjectItem } from "@/types/portfolio";
 import { projects } from "@/lib/data";
@@ -101,7 +105,7 @@ export function ProjectDetailPage({ project }: { project: ProjectItem }) {
               Back to Projects
             </Link>
 
-            {project.slug === "edusense" ? (
+            {project.slug === "edusense" || project.slug === "carbonxinsight" ? (
               <div className="flex flex-col items-center justify-center pt-2 text-center">
                 {/* Category & Status Pill */}
                 <motion.div
@@ -115,14 +119,14 @@ export function ProjectDetailPage({ project }: { project: ProjectItem }) {
                     <span className="relative inline-flex size-2 rounded-full bg-emerald-500" />
                   </span>
                   <span className="font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-[#7d7198]">
-                    AI Education Platform · Case Study
+                    {project.category} · Case Study
                   </span>
                 </motion.div>
 
                 {/* Formal Decrypted Title */}
                 <h1 className="font-display text-5xl font-bold tracking-[-0.04em] text-[#24323a] sm:text-7xl lg:text-8xl">
                   <DecryptedText
-                    text="EduSense"
+                    text={project.title}
                     speed={60}
                     maxIterations={10}
                     sequential={true}
@@ -137,7 +141,9 @@ export function ProjectDetailPage({ project }: { project: ProjectItem }) {
                 <div className="mt-3 flex items-center justify-center gap-3">
                   <span className="h-px w-8 bg-[#7d7198]/40 sm:w-12" />
                   <p className="font-mono text-xs font-semibold uppercase tracking-[0.26em] text-[#65707a]">
-                    AI-powered student productivity platform
+                    {project.slug === "carbonxinsight"
+                      ? "Coconut shell charcoal market price analytics"
+                      : "AI-powered student productivity platform"}
                   </p>
                   <span className="h-px w-8 bg-[#7d7198]/40 sm:w-12" />
                 </div>
@@ -151,21 +157,35 @@ export function ProjectDetailPage({ project }: { project: ProjectItem }) {
                 >
                   <div className="px-4 py-2 text-center">
                     <p className="font-mono text-[9px] font-semibold uppercase tracking-wider text-[#7d7198]">Role</p>
-                    <p className="text-xs font-semibold text-[#24323a]">Full-Stack & AI</p>
+                    <p className="text-xs font-semibold text-[#24323a]">
+                      {project.slug === "carbonxinsight" ? "Software Engineering Intern" : "Full-Stack & AI"}
+                    </p>
                   </div>
                   <div className="px-4 py-2 text-center">
                     <p className="font-mono text-[9px] font-semibold uppercase tracking-wider text-[#7d7198]">Core Stack</p>
-                    <p className="text-xs font-semibold text-[#24323a]">Next.js 16 · FastAPI · MongoDB</p>
+                    <p className="text-xs font-semibold text-[#24323a]">
+                      {project.slug === "carbonxinsight" ? "FastAPI · React 19 · MongoDB" : "Next.js 16 · FastAPI · MongoDB"}
+                    </p>
                   </div>
                   <div className="px-4 py-2 text-center">
-                    <p className="font-mono text-[9px] font-semibold uppercase tracking-wider text-[#7d7198]">AI Pipeline</p>
-                    <p className="text-xs font-semibold text-[#24323a]">Gemini + Groq LPU</p>
+                    <p className="font-mono text-[9px] font-semibold uppercase tracking-wider text-[#7d7198]">
+                      {project.slug === "carbonxinsight" ? "Analytics Engine" : "AI Pipeline"}
+                    </p>
+                    <p className="text-xs font-semibold text-[#24323a]">
+                      {project.slug === "carbonxinsight" ? "Highstock · pdfplumber" : "Gemini + Groq LPU"}
+                    </p>
                   </div>
                   <div className="px-4 py-2 text-center">
-                    <p className="font-mono text-[9px] font-semibold uppercase tracking-wider text-[#7d7198]">Status</p>
-                    <p className="text-xs font-semibold text-emerald-600">Production Ready</p>
+                    <p className="font-mono text-[9px] font-semibold uppercase tracking-wider text-[#7d7198]">
+                      {project.slug === "carbonxinsight" ? "Client" : "Status"}
+                    </p>
+                    <p className="text-xs font-semibold text-emerald-600">
+                      {project.slug === "carbonxinsight" ? "Haycarb PLC" : "Production Ready"}
+                    </p>
                   </div>
                 </motion.div>
+
+                {/* Introduction Article */}
                 <motion.article
                   initial={{ opacity: 0, y: 18 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -178,11 +198,11 @@ export function ProjectDetailPage({ project }: { project: ProjectItem }) {
                     Introduction
                   </p>
                   <p className="mt-4 max-w-2xl text-sm leading-7 text-[#65707a] sm:text-base sm:leading-8">
-                    A full-stack platform that helps students manage tasks, generate smart study schedules, summarize study materials, take AI-generated quizzes and collaborate in study groups. Built with Next.js, FastAPI and MongoDB, with Gemini and Groq powering the AI features.
+                    {project.description}
                   </p>
                 </motion.article>
 
-                {/* Actions: GitHub Repo & Quick Links Styled as requested */}
+                {/* Actions: GitHub Repo & Quick Links */}
                 <motion.div
                   initial={{ opacity: 0, y: 14 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -190,7 +210,7 @@ export function ProjectDetailPage({ project }: { project: ProjectItem }) {
                   className="mt-8 flex flex-wrap items-center justify-center gap-4"
                 >
                   <a
-                    href="https://github.com/ITPM-Project-EduSense/EduSense.git"
+                    href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center gap-2.5 bg-[#c7ddd4] px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-[#24323a] shadow-sm transition-all duration-200 hover:bg-[#b5d1c5]"
@@ -221,21 +241,28 @@ export function ProjectDetailPage({ project }: { project: ProjectItem }) {
                     {project.description}
                   </p>
 
-                  <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                    <a
-                      href={project.demoUrl}
-                      className="inline-flex items-center justify-center gap-2 rounded-full bg-[#e8e1f1] px-6 py-4 text-sm font-semibold text-[#24323a] transition hover:bg-[#d9d0e7]"
-                    >
-                      <ExternalLink size={17} />
-                      Live Demo
-                    </a>
+                  <div className="mt-8 flex flex-wrap items-center gap-3">
                     <a
                       href={project.githubUrl}
-                      className="inline-flex items-center justify-center gap-2 rounded-full border border-[#cfc8dd] bg-white px-6 py-4 text-sm font-semibold text-[#24323a] transition hover:border-[#9b90b6] hover:bg-[#f7f4fa]"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center gap-2.5 bg-[#c7ddd4] px-6 py-3.5 text-xs font-semibold uppercase tracking-[0.22em] text-[#24323a] shadow-sm transition hover:bg-[#b5d1c5]"
                     >
-                      <Github size={17} />
-                      GitHub
+                      <Github size={16} />
+                      <span>View GitHub Repository</span>
+                      <ExternalLink size={13} className="opacity-70" />
                     </a>
+                    {project.demoUrl && project.demoUrl !== "#" && (
+                      <a
+                        href={project.demoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center gap-2 border border-[#7d7198]/40 bg-white px-5 py-3.5 text-xs font-semibold uppercase tracking-[0.22em] text-[#7d7198] transition hover:border-[#24323a] hover:text-[#24323a]"
+                      >
+                        <ExternalLink size={15} />
+                        <span>Live Demo</span>
+                      </a>
+                    )}
                   </div>
                 </div>
 
@@ -263,202 +290,221 @@ export function ProjectDetailPage({ project }: { project: ProjectItem }) {
           </div>
         </section>
 
-        {/* System Component Architecture Visualizer Section — EduSense only */}
-        {project.slug === "edusense" && (
-        <section id="architecture" className="section-pad relative overflow-hidden bg-[#fcfaf6]">
-          <SectionAura side="left" />
+        {/* System Component Architecture Visualizer Section — EduSense & CarbonXInsight */}
+        {(project.slug === "edusense" || project.slug === "carbonxinsight") && (
+          <section id="architecture" className="section-pad relative overflow-hidden bg-[#fcfaf6]">
+            <SectionAura side="left" />
 
-          {/* Dotted Background Field */}
-          <div aria-hidden="true" className="absolute inset-0 z-0 opacity-70">
-            <div className="h-full w-full relative">
-              <DotField
-                gradientFrom="#5227FF"
-                gradientTo="#FF9FFC"
-                dotRadius={1.5}
-                dotSpacing={14}
-                cursorRadius={240}
-                bulgeStrength={0.6}
-                glowRadius={160}
-                pattern="grid"
-                glowColor="#ffffff"
-                gradientAngle={135}
-                twist={0}
-                glowIntensity={0.8}
-                baseOpacity={0.55}
-                waveAmplitude={0}
-                speed={1}
-                sparkle={false}
-                interactive
-                holdToZoom
-                intro
-                lightMode={true}
-              />
-            </div>
-          </div>
-
-          <div className="container-pad relative z-10">
-            {/* Header */}
-            <ScrollReveal>
-              <div className="mb-6">
-                
-                <h2 className="font-display text-3xl font-semibold tracking-[-0.03em] text-[#24323a] sm:text-4xl md:text-5xl">
-                  <TrueFocus
-                    sentence="System Component Architecture"
-                    manualMode={false}
-                    focusStyle="brackets"
-                    easing="smooth"
-                    order="sequential"
-                    blurAmount={5}
-                    focusScale={1}
-                    unfocusedOpacity={1}
-                    borderColor="#5227FF"
-                    cornerSize={16}
-                    borderWidth={3}
-                    animationDuration={0.5}
-                    pauseBetweenAnimations={1}
-                    highlightColor="#5227FF"
+            {/* Dotted Background Field ONLY for EduSense */}
+            {project.slug === "edusense" && (
+              <div aria-hidden="true" className="absolute inset-0 z-0 opacity-70">
+                <div className="h-full w-full relative">
+                  <DotField
+                    gradientFrom="#5227FF"
+                    gradientTo="#FF9FFC"
+                    dotRadius={1.5}
+                    dotSpacing={14}
+                    cursorRadius={240}
+                    bulgeStrength={0.6}
+                    glowRadius={160}
+                    pattern="grid"
+                    glowColor="#ffffff"
+                    gradientAngle={135}
+                    twist={0}
+                    glowIntensity={0.8}
+                    baseOpacity={0.55}
+                    waveAmplitude={0}
+                    speed={1}
+                    sparkle={false}
+                    interactive
+                    holdToZoom
+                    intro
+                    lightMode={true}
                   />
-                </h2>
-                
-              </div>
-            </ScrollReveal>
-
-            {/* Light-Themed Animated Beam Network */}
-            <ScrollReveal>
-              <div
-                ref={containerRef}
-                className="relative flex w-full items-center justify-center overflow-hidden rounded-2xl border border-[#d9d3df] bg-white/80 backdrop-blur-md p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] md:p-12"
-              >
-                <div className="flex size-full max-w-5xl flex-col items-center justify-center gap-10 md:flex-row md:justify-between">
-                  {/* Left Column — 5 Nodes */}
-                  <div className="flex flex-row flex-wrap justify-center gap-4 md:flex-col md:items-center md:gap-5">
-                    <Circle
-                      ref={taskRef}
-                      label="Tasks"
-                      labelClassName="text-emerald-700/80 group-hover:text-emerald-700 font-semibold"
-                      className="border-emerald-200 bg-emerald-50 text-emerald-600 shadow-[0_4px_16px_rgba(16,185,129,0.18)] hover:border-emerald-400 hover:bg-emerald-100 hover:shadow-[0_6px_20px_rgba(16,185,129,0.28)]"
-                    >
-                      <CheckSquare className="size-5" />
-                    </Circle>
-                    <Circle
-                      ref={scheduleRef}
-                      label="Schedules"
-                      labelClassName="text-sky-700/80 group-hover:text-sky-700 font-semibold"
-                      className="border-sky-200 bg-sky-50 text-sky-600 shadow-[0_4px_16px_rgba(14,165,233,0.18)] hover:border-sky-400 hover:bg-sky-100 hover:shadow-[0_6px_20px_rgba(14,165,233,0.28)]"
-                    >
-                      <Calendar className="size-5" />
-                    </Circle>
-                    <Circle
-                      ref={materialRef}
-                      label="Materials"
-                      labelClassName="text-amber-700/80 group-hover:text-amber-700 font-semibold"
-                      className="border-amber-200 bg-amber-50 text-amber-600 shadow-[0_4px_16px_rgba(245,158,11,0.18)] hover:border-amber-400 hover:bg-amber-100 hover:shadow-[0_6px_20px_rgba(245,158,11,0.28)]"
-                    >
-                      <FileText className="size-5" />
-                    </Circle>
-                    <Circle
-                      ref={assistantRef}
-                      label="Assistant"
-                      labelClassName="text-indigo-700/80 group-hover:text-indigo-700 font-semibold"
-                      className="border-indigo-200 bg-indigo-50 text-indigo-600 shadow-[0_4px_16px_rgba(99,102,241,0.18)] hover:border-indigo-400 hover:bg-indigo-100 hover:shadow-[0_6px_20px_rgba(99,102,241,0.28)]"
-                    >
-                      <Bot className="size-5" />
-                    </Circle>
-                    <Circle
-                      ref={searchRef}
-                      label="Search"
-                      labelClassName="text-teal-700/80 group-hover:text-teal-700 font-semibold"
-                      className="border-teal-200 bg-teal-50 text-teal-600 shadow-[0_4px_16px_rgba(20,184,166,0.18)] hover:border-teal-400 hover:bg-teal-100 hover:shadow-[0_6px_20px_rgba(20,184,166,0.28)]"
-                    >
-                      <Search className="size-5" />
-                    </Circle>
-                  </div>
-
-                  {/* Central Architecture Hub */}
-                  <div className="my-4 flex flex-col items-center md:my-0">
-                    <Circle
-                      ref={centerCoreRef}
-                      className="size-20 border-violet-300 bg-gradient-to-tr from-violet-100 via-purple-50 to-pink-50 text-violet-600 shadow-[0_0_35px_rgba(139,92,246,0.35)] hover:border-violet-400 hover:shadow-[0_0_45px_rgba(139,92,246,0.5)]"
-                      label="EduSense Core"
-                      labelClassName="font-semibold text-violet-700"
-                    >
-                      <Cpu className="size-8 animate-pulse text-violet-600" />
-                    </Circle>
-                  </div>
-
-                  {/* Right Column — 5 Nodes */}
-                  <div className="flex flex-row flex-wrap justify-center gap-4 md:flex-col md:items-center md:gap-5">
-                    <Circle
-                      ref={quizRef}
-                      label="Quizzes"
-                      labelClassName="text-rose-700/80 group-hover:text-rose-700 font-semibold"
-                      className="border-rose-200 bg-rose-50 text-rose-600 shadow-[0_4px_16px_rgba(244,63,94,0.18)] hover:border-rose-400 hover:bg-rose-100 hover:shadow-[0_6px_20px_rgba(244,63,94,0.28)]"
-                    >
-                      <HelpCircle className="size-5" />
-                    </Circle>
-                    <Circle
-                      ref={analyticsRef}
-                      label="Analytics"
-                      labelClassName="text-blue-700/80 group-hover:text-blue-700 font-semibold"
-                      className="border-blue-200 bg-blue-50 text-blue-600 shadow-[0_4px_16px_rgba(59,130,246,0.18)] hover:border-blue-400 hover:bg-blue-100 hover:shadow-[0_6px_20px_rgba(59,130,246,0.28)]"
-                    >
-                      <TrendingUp className="size-5" />
-                    </Circle>
-                    <Circle
-                      ref={groupRef}
-                      label="Groups"
-                      labelClassName="text-purple-700/80 group-hover:text-purple-700 font-semibold"
-                      className="border-purple-200 bg-purple-50 text-purple-600 shadow-[0_4px_16px_rgba(168,85,247,0.18)] hover:border-purple-400 hover:bg-purple-100 hover:shadow-[0_6px_20px_rgba(168,85,247,0.28)]"
-                    >
-                      <Users className="size-5" />
-                    </Circle>
-                    <Circle
-                      ref={authRef}
-                      label="Auth"
-                      labelClassName="text-emerald-700/80 group-hover:text-emerald-700 font-semibold"
-                      className="border-emerald-200 bg-emerald-50 text-emerald-600 shadow-[0_4px_16px_rgba(16,185,129,0.18)] hover:border-emerald-400 hover:bg-emerald-100 hover:shadow-[0_6px_20px_rgba(16,185,129,0.28)]"
-                    >
-                      <ShieldCheck className="size-5" />
-                    </Circle>
-                    <Circle
-                      ref={notifRef}
-                      label="Notifications"
-                      labelClassName="text-orange-700/80 group-hover:text-orange-700 font-semibold"
-                      className="border-orange-200 bg-orange-50 text-orange-600 shadow-[0_4px_16px_rgba(249,115,22,0.18)] hover:border-orange-400 hover:bg-orange-100 hover:shadow-[0_6px_20px_rgba(249,115,22,0.28)]"
-                    >
-                      <Bell className="size-5" />
-                    </Circle>
-                  </div>
                 </div>
-
-                {/* Colorful Curved Animated Beams — Left to Core */}
-                <AnimatedBeam duration={3} curvature={75} pathColor="#6ee7b7" pathOpacity={0.45} pathWidth={2} gradientStartColor="#10b981" gradientStopColor="#059669" containerRef={containerRef} fromRef={taskRef} toRef={centerCoreRef} />
-                <AnimatedBeam duration={3.4} curvature={40} pathColor="#7dd3fc" pathOpacity={0.45} pathWidth={2} gradientStartColor="#0284c7" gradientStopColor="#38bdf8" containerRef={containerRef} fromRef={scheduleRef} toRef={centerCoreRef} />
-                <AnimatedBeam duration={3.8} curvature={0} pathColor="#fcd34d" pathOpacity={0.45} pathWidth={2} gradientStartColor="#f59e0b" gradientStopColor="#fbbf24" containerRef={containerRef} fromRef={materialRef} toRef={centerCoreRef} />
-                <AnimatedBeam duration={3.2} curvature={-40} pathColor="#a5b4fc" pathOpacity={0.45} pathWidth={2} gradientStartColor="#6366f1" gradientStopColor="#818cf8" containerRef={containerRef} fromRef={assistantRef} toRef={centerCoreRef} />
-                <AnimatedBeam duration={4.2} curvature={-75} pathColor="#5eead4" pathOpacity={0.45} pathWidth={2} gradientStartColor="#0d9488" gradientStopColor="#2dd4bf" containerRef={containerRef} fromRef={searchRef} toRef={centerCoreRef} />
-
-                {/* Colorful Curved Animated Beams — Core to Right */}
-                <AnimatedBeam duration={3.6} curvature={75} pathColor="#fda4af" pathOpacity={0.45} pathWidth={2} gradientStartColor="#f43f5e" gradientStopColor="#fb7185" containerRef={containerRef} fromRef={centerCoreRef} toRef={quizRef} />
-                <AnimatedBeam duration={4} curvature={40} pathColor="#93c5fd" pathOpacity={0.45} pathWidth={2} gradientStartColor="#2563eb" gradientStopColor="#60a5fa" containerRef={containerRef} fromRef={centerCoreRef} toRef={analyticsRef} />
-                <AnimatedBeam duration={3.3} curvature={0} pathColor="#d8b4fe" pathOpacity={0.45} pathWidth={2} gradientStartColor="#9333ea" gradientStopColor="#c084fc" containerRef={containerRef} fromRef={centerCoreRef} toRef={groupRef} />
-                <AnimatedBeam duration={3.7} curvature={-40} pathColor="#86efac" pathOpacity={0.45} pathWidth={2} gradientStartColor="#16a34a" gradientStopColor="#4ade80" containerRef={containerRef} fromRef={centerCoreRef} toRef={authRef} />
-                <AnimatedBeam duration={4.4} curvature={-75} pathColor="#fdba74" pathOpacity={0.45} pathWidth={2} gradientStartColor="#ea580c" gradientStopColor="#fb923c" containerRef={containerRef} fromRef={centerCoreRef} toRef={notifRef} />
               </div>
-            </ScrollReveal>
+            )}
 
-            {/* Magic UI Spotlight Bento Grid Architecture Breakdown */}
-            <ScrollReveal>
-              <EduSenseBentoStack />
-            </ScrollReveal>
-          </div>
-        </section>
+            <div className="container-pad relative z-10">
+              {/* Header */}
+              <ScrollReveal>
+                <div className="mb-6">
+                  <div className="mb-3 flex items-center gap-4">
+                    <span aria-hidden="true" className="h-px w-14 bg-[#24323a] sm:w-20" />
+                    <p className="text-xs font-semibold uppercase tracking-[0.34em] text-[#7d7198]">
+                      Architecture Overview
+                    </p>
+                  </div>
+                  <h2 className="font-display text-3xl font-semibold tracking-[-0.03em] text-[#24323a] sm:text-4xl md:text-5xl">
+                    <TrueFocus
+                      sentence={project.slug === "carbonxinsight" ? "Market Analytics Architecture" : "System Component Architecture"}
+                      manualMode={false}
+                      focusStyle="brackets"
+                      easing="smooth"
+                      order="sequential"
+                      blurAmount={5}
+                      focusScale={1}
+                      unfocusedOpacity={1}
+                      borderColor={project.slug === "carbonxinsight" ? "#10b981" : "#5227FF"}
+                      cornerSize={16}
+                      borderWidth={3}
+                      animationDuration={0.5}
+                      pauseBetweenAnimations={1}
+                      highlightColor={project.slug === "carbonxinsight" ? "#10b981" : "#5227FF"}
+                    />
+                  </h2>
+                </div>
+              </ScrollReveal>
+
+              {/* Visualizer: Animated Beam Network ONLY for EduSense */}
+              {project.slug === "edusense" && (
+                <ScrollReveal>
+                  <div
+                    ref={containerRef}
+                    className="relative flex w-full items-center justify-center overflow-hidden rounded-2xl border border-[#d9d3df] bg-white/80 backdrop-blur-md p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] md:p-12"
+                  >
+                    <div className="flex size-full max-w-5xl flex-col items-center justify-center gap-10 md:flex-row md:justify-between">
+                      {/* Left Column — 5 Nodes */}
+                      <div className="flex flex-row flex-wrap justify-center gap-4 md:flex-col md:items-center md:gap-5">
+                        <Circle
+                          ref={taskRef}
+                          label="Tasks"
+                          labelClassName="text-emerald-700/80 group-hover:text-emerald-700 font-semibold"
+                          className="border-emerald-200 bg-emerald-50 text-emerald-600 shadow-[0_4px_16px_rgba(16,185,129,0.18)] hover:border-emerald-400 hover:bg-emerald-100 hover:shadow-[0_6px_20px_rgba(16,185,129,0.28)]"
+                        >
+                          <CheckSquare className="size-5" />
+                        </Circle>
+                        <Circle
+                          ref={scheduleRef}
+                          label="Schedules"
+                          labelClassName="text-sky-700/80 group-hover:text-sky-700 font-semibold"
+                          className="border-sky-200 bg-sky-50 text-sky-600 shadow-[0_4px_16px_rgba(14,165,233,0.18)] hover:border-sky-400 hover:bg-sky-100 hover:shadow-[0_6px_20px_rgba(14,165,233,0.28)]"
+                        >
+                          <Calendar className="size-5" />
+                        </Circle>
+                        <Circle
+                          ref={materialRef}
+                          label="Materials"
+                          labelClassName="text-amber-700/80 group-hover:text-amber-700 font-semibold"
+                          className="border-amber-200 bg-amber-50 text-amber-600 shadow-[0_4px_16px_rgba(245,158,11,0.18)] hover:border-amber-400 hover:bg-amber-100 hover:shadow-[0_6px_20px_rgba(245,158,11,0.28)]"
+                        >
+                          <FileText className="size-5" />
+                        </Circle>
+                        <Circle
+                          ref={assistantRef}
+                          label="Assistant"
+                          labelClassName="text-indigo-700/80 group-hover:text-indigo-700 font-semibold"
+                          className="border-indigo-200 bg-indigo-50 text-indigo-600 shadow-[0_4px_16px_rgba(99,102,241,0.18)] hover:border-indigo-400 hover:bg-indigo-100 hover:shadow-[0_6px_20px_rgba(99,102,241,0.28)]"
+                        >
+                          <Bot className="size-5" />
+                        </Circle>
+                        <Circle
+                          ref={searchRef}
+                          label="Search"
+                          labelClassName="text-teal-700/80 group-hover:text-teal-700 font-semibold"
+                          className="border-teal-200 bg-teal-50 text-teal-600 shadow-[0_4px_16px_rgba(20,184,166,0.18)] hover:border-teal-400 hover:bg-teal-100 hover:shadow-[0_6px_20px_rgba(20,184,166,0.28)]"
+                        >
+                          <Search className="size-5" />
+                        </Circle>
+                      </div>
+
+                      {/* Central Architecture Hub */}
+                      <div className="my-4 flex flex-col items-center md:my-0">
+                        <Circle
+                          ref={centerCoreRef}
+                          className="size-20 border-violet-300 bg-gradient-to-tr from-violet-100 via-purple-50 to-pink-50 text-violet-600 shadow-[0_0_35px_rgba(139,92,246,0.35)] hover:border-violet-400 hover:shadow-[0_0_45px_rgba(139,92,246,0.5)]"
+                          label="EduSense Core"
+                          labelClassName="font-semibold text-violet-700"
+                        >
+                          <Cpu className="size-8 animate-pulse text-violet-600" />
+                        </Circle>
+                      </div>
+
+                      {/* Right Column — 5 Nodes */}
+                      <div className="flex flex-row flex-wrap justify-center gap-4 md:flex-col md:items-center md:gap-5">
+                        <Circle
+                          ref={quizRef}
+                          label="Quizzes"
+                          labelClassName="text-rose-700/80 group-hover:text-rose-700 font-semibold"
+                          className="border-rose-200 bg-rose-50 text-rose-600 shadow-[0_4px_16px_rgba(244,63,94,0.18)] hover:border-rose-400 hover:bg-rose-100 hover:shadow-[0_6px_20px_rgba(244,63,94,0.28)]"
+                        >
+                          <HelpCircle className="size-5" />
+                        </Circle>
+                        <Circle
+                          ref={analyticsRef}
+                          label="Analytics"
+                          labelClassName="text-blue-700/80 group-hover:text-blue-700 font-semibold"
+                          className="border-blue-200 bg-blue-50 text-blue-600 shadow-[0_4px_16px_rgba(59,130,246,0.18)] hover:border-blue-400 hover:bg-blue-100 hover:shadow-[0_6px_20px_rgba(59,130,246,0.28)]"
+                        >
+                          <TrendingUp className="size-5" />
+                        </Circle>
+                        <Circle
+                          ref={groupRef}
+                          label="Groups"
+                          labelClassName="text-purple-700/80 group-hover:text-purple-700 font-semibold"
+                          className="border-purple-200 bg-purple-50 text-purple-600 shadow-[0_4px_16px_rgba(168,85,247,0.18)] hover:border-purple-400 hover:bg-purple-100 hover:shadow-[0_6px_20px_rgba(168,85,247,0.28)]"
+                        >
+                          <Users className="size-5" />
+                        </Circle>
+                        <Circle
+                          ref={authRef}
+                          label="Auth"
+                          labelClassName="text-emerald-700/80 group-hover:text-emerald-700 font-semibold"
+                          className="border-emerald-200 bg-emerald-50 text-emerald-600 shadow-[0_4px_16px_rgba(16,185,129,0.18)] hover:border-emerald-400 hover:bg-emerald-100 hover:shadow-[0_6px_20px_rgba(16,185,129,0.28)]"
+                        >
+                          <ShieldCheck className="size-5" />
+                        </Circle>
+                        <Circle
+                          ref={notifRef}
+                          label="Notifications"
+                          labelClassName="text-orange-700/80 group-hover:text-orange-700 font-semibold"
+                          className="border-orange-200 bg-orange-50 text-orange-600 shadow-[0_4px_16px_rgba(249,115,22,0.18)] hover:border-orange-400 hover:bg-orange-100 hover:shadow-[0_6px_20px_rgba(249,115,22,0.28)]"
+                        >
+                          <Bell className="size-5" />
+                        </Circle>
+                      </div>
+                    </div>
+
+                    {/* Colorful Curved Animated Beams — Left to Core */}
+                    <AnimatedBeam duration={3} curvature={75} pathColor="#6ee7b7" pathOpacity={0.45} pathWidth={2} gradientStartColor="#10b981" gradientStopColor="#059669" containerRef={containerRef} fromRef={taskRef} toRef={centerCoreRef} />
+                    <AnimatedBeam duration={3.4} curvature={40} pathColor="#7dd3fc" pathOpacity={0.45} pathWidth={2} gradientStartColor="#0284c7" gradientStopColor="#38bdf8" containerRef={containerRef} fromRef={scheduleRef} toRef={centerCoreRef} />
+                    <AnimatedBeam duration={3.8} curvature={0} pathColor="#fcd34d" pathOpacity={0.45} pathWidth={2} gradientStartColor="#f59e0b" gradientStopColor="#fbbf24" containerRef={containerRef} fromRef={materialRef} toRef={centerCoreRef} />
+                    <AnimatedBeam duration={3.2} curvature={-40} pathColor="#a5b4fc" pathOpacity={0.45} pathWidth={2} gradientStartColor="#6366f1" gradientStopColor="#818cf8" containerRef={containerRef} fromRef={assistantRef} toRef={centerCoreRef} />
+                    <AnimatedBeam duration={4.2} curvature={-75} pathColor="#5eead4" pathOpacity={0.45} pathWidth={2} gradientStartColor="#0d9488" gradientStopColor="#2dd4bf" containerRef={containerRef} fromRef={searchRef} toRef={centerCoreRef} />
+
+                    {/* Colorful Curved Animated Beams — Core to Right */}
+                    <AnimatedBeam duration={3.6} curvature={75} pathColor="#fda4af" pathOpacity={0.45} pathWidth={2} gradientStartColor="#f43f5e" gradientStopColor="#fb7185" containerRef={containerRef} fromRef={centerCoreRef} toRef={quizRef} />
+                    <AnimatedBeam duration={4} curvature={40} pathColor="#93c5fd" pathOpacity={0.45} pathWidth={2} gradientStartColor="#2563eb" gradientStopColor="#60a5fa" containerRef={containerRef} fromRef={centerCoreRef} toRef={analyticsRef} />
+                    <AnimatedBeam duration={3.3} curvature={0} pathColor="#d8b4fe" pathOpacity={0.45} pathWidth={2} gradientStartColor="#9333ea" gradientStopColor="#c084fc" containerRef={containerRef} fromRef={centerCoreRef} toRef={groupRef} />
+                    <AnimatedBeam duration={3.7} curvature={-40} pathColor="#86efac" pathOpacity={0.45} pathWidth={2} gradientStartColor="#16a34a" gradientStopColor="#4ade80" containerRef={containerRef} fromRef={centerCoreRef} toRef={authRef} />
+                    <AnimatedBeam duration={4.4} curvature={-75} pathColor="#fdba74" pathOpacity={0.45} pathWidth={2} gradientStartColor="#ea580c" gradientStopColor="#fb923c" containerRef={containerRef} fromRef={centerCoreRef} toRef={notifRef} />
+                  </div>
+                </ScrollReveal>
+              )}
+
+              {/* Spotlight Bento Grid Architecture Breakdown */}
+              <ScrollReveal>
+                <EduSenseBentoStack />
+              </ScrollReveal>
+            </div>
+          </section>
         )}
 
-        {/* Impact Metrics & Engineering Challenges — EduSense Only (No dotted background) */}
+        {/* Impact Metrics & Engineering Challenges — EduSense Only */}
         {project.slug === "edusense" && <EduSenseImpactChallenges />}
 
-        {/* Dynamic Next Project Feature Card (Option 1) */}
+        {/* CarbonXInsight Section — Market Analytics Graph & Ingestion */}
+        {project.slug === "carbonxinsight" && (
+          <section id="analytics" className="section-pad relative overflow-hidden bg-[#fcfaf6] pt-6 pb-12">
+            <div className="container-pad relative z-10">
+              <ScrollReveal>
+                <CarbonXInsightDashboard />
+              </ScrollReveal>
+            </div>
+          </section>
+        )}
+
+        {/* Dynamic Next Project Feature Card */}
         <section className="section-pad pt-4 pb-20">
           <div className="container-pad">
             <div className="group relative overflow-hidden rounded-2xl border border-[#d9d3df] bg-white/90 p-8 shadow-[0_12px_36px_rgba(36,50,58,0.06)] backdrop-blur-sm transition-all duration-300 hover:border-[#7d7198] hover:shadow-[0_20px_48px_rgba(125,113,152,0.14)] md:p-10">

@@ -84,21 +84,30 @@ export const projects: ProjectItem[] = [
   {
     slug: "carbonxinsight",
     title: "CarbonXInsight",
-    category: "Sustainability Analytics",
+    category: "Commodity Market Intelligence · Haycarb PLC",
     description:
-      "A carbon insight solution for tracking, visualizing, and interpreting sustainability metrics for better operational decisions.",
-    stack: ["React", "Node.js", "Charts", "MongoDB"],
+      "Market-analytics web dashboard for coconut shell charcoal prices (US$/MT) across Sri Lanka, India, and Indonesia. Ingests 35+ monthly WPU reports and Excel sheets with automated pdfplumber table extraction and interactive Highstock analytics.",
+    stack: ["Python", "FastAPI", "React 19", "Highcharts", "MongoDB", "pdfplumber"],
     problem:
-      "Sustainability data becomes difficult to act on when it is stored in disconnected spreadsheets and static reports.",
+      "Commodity pricing data was scattered across 35+ unstructured monthly PDF reports from CDA, CDB, and UCAP, requiring manual calculation and error-prone tracking.",
     solution:
-      "CarbonXInsight turns carbon-related data into clean visual dashboards, helping teams understand trends, compare metrics, and make better decisions.",
-    impact: ["Made sustainability metrics easier to interpret", "Supported faster reporting workflows", "Improved visibility for operational decision makers"],
-    features: ["Carbon metric dashboards", "Data visualization modules", "Report-ready summaries", "Backend API integration"],
-    screenshots: [
-      { title: "Carbon Overview", description: "High-level sustainability metrics presented for fast executive scanning." },
-      { title: "Trend Analytics", description: "Charts and comparisons for monitoring changes over time." },
+      "Engineered an automated ingestion pipeline using FastAPI, pdfplumber, and MongoDB to extract, clean, and visualize time-series prices on an interactive Highstock dashboard with real-time country comparisons.",
+    impact: [
+      "Automated extraction from 35+ monthly market PDF reports and Excel matrices",
+      "Delivered real-time benchmark pricing (US$/MT) across Sri Lanka, India, and Indonesia",
+      "Provided Min / Avg / Max country analytics with client-side PDF/CSV export capabilities",
     ],
-    githubUrl: "https://github.com/sadumina",
+    features: [
+      "Automated multi-PDF & Excel tabular extraction engine",
+      "Highstock interactive multi-series price trajectory chart",
+      "Dynamic country comparison drawer & KPI matrix",
+      "Client-side jsPDF and Excel report generation",
+    ],
+    screenshots: [
+      { title: "Market Analytics Dashboard", description: "Interactive time-series pricing chart with country KPI cards." },
+      { title: "Monthly Data Ingestion", description: "PDF and Excel drag-and-drop parsing interface." },
+    ],
+    githubUrl: "https://github.com/HayCarb-ORG/CarbonXinsight-.git",
     demoUrl: "#",
   },
   {
