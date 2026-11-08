@@ -5,14 +5,19 @@ import { Navbar } from "@/components/Navbar";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { SmoothScrollProvider } from "@/components/SmoothScrollProvider";
 import TechText from "@/components/TechText";
+import DecryptedText from "@/components/DecryptedText";
 import TrueFocus from "@/components/TrueFocus";
 import DotField from "@/components/DotField"; // Adjust path if DotField is located elsewhere
 import { ScrollReveal, SectionAura } from "@/components/ScrollReveal";
 import { AnimatedBeam } from "@/components/ui/animated-beam";
+import { EduSenseBentoStack } from "@/components/EduSenseBentoStack";
+import { EduSenseImpactChallenges } from "@/components/EduSenseImpactChallenges";
 import { cn } from "@/lib/utils";
 import type { ProjectItem } from "@/types/portfolio";
+import { projects } from "@/lib/data";
 import {
   ArrowLeft,
+  ArrowRight,
   ExternalLink,
   Github,
   CheckSquare,
@@ -30,24 +35,29 @@ import {
 import { motion } from "motion/react";
 import Link from "next/link";
 
-// Circle component for AnimatedBeam nodes - Light Themed
+// Circle component for AnimatedBeam nodes - Light Themed with vibrant support
 const Circle = forwardRef<
   HTMLDivElement,
-  { className?: string; children?: React.ReactNode; label?: string }
->(({ className, children, label }, ref) => {
+  { className?: string; children?: React.ReactNode; label?: string; labelClassName?: string }
+>(({ className, children, label, labelClassName }, ref) => {
   return (
-    <div className="flex flex-col items-center gap-2 text-center">
+    <div className="group flex flex-col items-center gap-2 text-center">
       <div
         ref={ref}
         className={cn(
-          "z-10 flex size-12 items-center justify-center rounded-full border border-[#d9d3df] bg-white p-3 text-[#24323a] shadow-[0_4px_16px_rgba(125,113,152,0.12)] transition-all duration-300 hover:scale-110 hover:border-[#7d7198] hover:text-[#7d7198]",
+          "z-10 flex size-12 items-center justify-center rounded-full border border-[#d9d3df] bg-white p-3 text-[#24323a] shadow-[0_4px_16px_rgba(0,0,0,0.06)] transition-all duration-300 hover:scale-110",
           className
         )}
       >
         {children}
       </div>
       {label && (
-        <span className="max-w-[110px] font-mono text-[10px] uppercase tracking-wider text-[#7d7198]">
+        <span
+          className={cn(
+            "max-w-[110px] font-mono text-[10px] uppercase tracking-wider text-[#7d7198] transition-colors duration-200 group-hover:text-[#24323a]",
+            labelClassName
+          )}
+        >
           {label}
         </span>
       )}
@@ -59,6 +69,8 @@ Circle.displayName = "Circle";
 
 export function ProjectDetailPage({ project }: { project: ProjectItem }) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const currentIndex = projects.findIndex((p) => p.slug === project.slug);
+  const nextProject = projects[(currentIndex + 1) % projects.length];
 
   // AnimatedBeam node references
   const centerCoreRef = useRef<HTMLDivElement>(null);
@@ -90,40 +102,70 @@ export function ProjectDetailPage({ project }: { project: ProjectItem }) {
             </Link>
 
             {project.slug === "edusense" ? (
-              <div className="flex flex-col items-center justify-center pt-2">
-                <div className="h-28 w-full max-w-4xl sm:h-36 lg:h-44">
-                  <h1 className="sr-only">{project.title}</h1>
-                  <TechText
+              <div className="flex flex-col items-center justify-center pt-2 text-center">
+                {/* Category & Status Pill */}
+                <motion.div
+                  initial={{ opacity: 0, y: -8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4 }}
+                  className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#d9d3df] bg-white/90 px-3.5 py-1 shadow-sm backdrop-blur-sm"
+                >
+                  <span className="relative flex size-2">
+                    <span className="absolute inline-flex size-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                    <span className="relative inline-flex size-2 rounded-full bg-emerald-500" />
+                  </span>
+                  <span className="font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-[#7d7198]">
+                    AI Education Platform · Case Study
+                  </span>
+                </motion.div>
+
+                {/* Formal Decrypted Title */}
+                <h1 className="font-display text-5xl font-bold tracking-[-0.04em] text-[#24323a] sm:text-7xl lg:text-8xl">
+                  <DecryptedText
                     text="EduSense"
-                    fontWeight={600}
-                    fontSize={88}
-                    reveal="letter"
-                    dashLength={4}
-                    dashGap={2}
-                    specks={15}
-                    intro="none"
-                    introDuration={2}
-                    clickKick
-                    guides={false}
-                    letterSpacing={-0.05}
-                    accentColor="#7d7198"
-                    reach={200}
-                    softness={0.7}
-                    lineStyle="dashed"
-                    strokeWidth={1.5}
-                    speed={1}
-                    bounce={0.4}
-                    selection
-                    labels
-                    color="#24323a"
-                    align="center"
-                    draggable
-                    sweep
+                    speed={60}
+                    maxIterations={10}
+                    sequential={true}
+                    animateOn="view"
+                    parentClassName="inline-block"
+                    className="text-[#24323a]"
+                    encryptedClassName="text-[#7d7198] opacity-75"
                   />
+                </h1>
+
+                {/* Subtitle with subtle accent rules */}
+                <div className="mt-3 flex items-center justify-center gap-3">
+                  <span className="h-px w-8 bg-[#7d7198]/40 sm:w-12" />
+                  <p className="font-mono text-xs font-semibold uppercase tracking-[0.26em] text-[#65707a]">
+                    AI-powered student productivity platform
+                  </p>
+                  <span className="h-px w-8 bg-[#7d7198]/40 sm:w-12" />
                 </div>
-                <p className="mt-1 text-center text-sm font-semibold uppercase tracking-[0.24em] text-[#65707a]">
-                  AI-powered student productivity platform
-                </p>
+
+                {/* Formal Quick-Specs Strip */}
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.15 }}
+                  className="mt-6 flex flex-wrap items-center justify-center divide-y divide-[#d9d3df] rounded-xl border border-[#d9d3df] bg-white/80 shadow-[0_4px_16px_rgba(36,50,58,0.04)] backdrop-blur-sm sm:divide-x sm:divide-y-0"
+                >
+                  <div className="px-4 py-2 text-center">
+                    <p className="font-mono text-[9px] font-semibold uppercase tracking-wider text-[#7d7198]">Role</p>
+                    <p className="text-xs font-semibold text-[#24323a]">Full-Stack & AI</p>
+                  </div>
+                  <div className="px-4 py-2 text-center">
+                    <p className="font-mono text-[9px] font-semibold uppercase tracking-wider text-[#7d7198]">Core Stack</p>
+                    <p className="text-xs font-semibold text-[#24323a]">Next.js 16 · FastAPI · MongoDB</p>
+                  </div>
+                  <div className="px-4 py-2 text-center">
+                    <p className="font-mono text-[9px] font-semibold uppercase tracking-wider text-[#7d7198]">AI Pipeline</p>
+                    <p className="text-xs font-semibold text-[#24323a]">Gemini + Groq LPU</p>
+                  </div>
+                  <div className="px-4 py-2 text-center">
+                    <p className="font-mono text-[9px] font-semibold uppercase tracking-wider text-[#7d7198]">Status</p>
+                    <p className="text-xs font-semibold text-emerald-600">Production Ready</p>
+                  </div>
+                </motion.div>
                 <motion.article
                   initial={{ opacity: 0, y: 18 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -139,6 +181,32 @@ export function ProjectDetailPage({ project }: { project: ProjectItem }) {
                     A full-stack platform that helps students manage tasks, generate smart study schedules, summarize study materials, take AI-generated quizzes and collaborate in study groups. Built with Next.js, FastAPI and MongoDB, with Gemini and Groq powering the AI features.
                   </p>
                 </motion.article>
+
+                {/* Actions: GitHub Repo & Quick Links Styled as requested */}
+                <motion.div
+                  initial={{ opacity: 0, y: 14 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.25 }}
+                  className="mt-8 flex flex-wrap items-center justify-center gap-4"
+                >
+                  <a
+                    href="https://github.com/ITPM-Project-EduSense/EduSense.git"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2.5 bg-[#c7ddd4] px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-[#24323a] shadow-sm transition-all duration-200 hover:bg-[#b5d1c5]"
+                  >
+                    <Github size={15} />
+                    <span>GitHub Repository</span>
+                    <ExternalLink size={13} className="opacity-70" />
+                  </a>
+                  <a
+                    href="#architecture"
+                    className="inline-flex items-center justify-center gap-2 border border-[#7d7198]/40 bg-white px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-[#7d7198] transition-all duration-200 hover:border-[#24323a] hover:text-[#24323a]"
+                  >
+                    <Cpu size={15} />
+                    <span>Architecture</span>
+                  </a>
+                </motion.div>
               </div>
             ) : (
               <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
@@ -232,12 +300,7 @@ export function ProjectDetailPage({ project }: { project: ProjectItem }) {
             {/* Header */}
             <ScrollReveal>
               <div className="mb-6">
-                <div className="mb-3 flex items-center gap-4">
-                  <span aria-hidden="true" className="h-px w-14 bg-[#24323a] sm:w-20" />
-                  <p className="text-xs font-semibold uppercase tracking-[0.34em] text-[#7d7198]">
-                    Architecture Overview
-                  </p>
-                </div>
+                
                 <h2 className="font-display text-3xl font-semibold tracking-[-0.03em] text-[#24323a] sm:text-4xl md:text-5xl">
                   <TrueFocus
                     sentence="System Component Architecture"
@@ -269,19 +332,44 @@ export function ProjectDetailPage({ project }: { project: ProjectItem }) {
                 <div className="flex size-full max-w-5xl flex-col items-center justify-center gap-10 md:flex-row md:justify-between">
                   {/* Left Column — 5 Nodes */}
                   <div className="flex flex-row flex-wrap justify-center gap-4 md:flex-col md:items-center md:gap-5">
-                    <Circle ref={taskRef} label="Tasks">
+                    <Circle
+                      ref={taskRef}
+                      label="Tasks"
+                      labelClassName="text-emerald-700/80 group-hover:text-emerald-700 font-semibold"
+                      className="border-emerald-200 bg-emerald-50 text-emerald-600 shadow-[0_4px_16px_rgba(16,185,129,0.18)] hover:border-emerald-400 hover:bg-emerald-100 hover:shadow-[0_6px_20px_rgba(16,185,129,0.28)]"
+                    >
                       <CheckSquare className="size-5" />
                     </Circle>
-                    <Circle ref={scheduleRef} label="Schedules">
+                    <Circle
+                      ref={scheduleRef}
+                      label="Schedules"
+                      labelClassName="text-sky-700/80 group-hover:text-sky-700 font-semibold"
+                      className="border-sky-200 bg-sky-50 text-sky-600 shadow-[0_4px_16px_rgba(14,165,233,0.18)] hover:border-sky-400 hover:bg-sky-100 hover:shadow-[0_6px_20px_rgba(14,165,233,0.28)]"
+                    >
                       <Calendar className="size-5" />
                     </Circle>
-                    <Circle ref={materialRef} label="Materials">
+                    <Circle
+                      ref={materialRef}
+                      label="Materials"
+                      labelClassName="text-amber-700/80 group-hover:text-amber-700 font-semibold"
+                      className="border-amber-200 bg-amber-50 text-amber-600 shadow-[0_4px_16px_rgba(245,158,11,0.18)] hover:border-amber-400 hover:bg-amber-100 hover:shadow-[0_6px_20px_rgba(245,158,11,0.28)]"
+                    >
                       <FileText className="size-5" />
                     </Circle>
-                    <Circle ref={assistantRef} label="Assistant">
+                    <Circle
+                      ref={assistantRef}
+                      label="Assistant"
+                      labelClassName="text-indigo-700/80 group-hover:text-indigo-700 font-semibold"
+                      className="border-indigo-200 bg-indigo-50 text-indigo-600 shadow-[0_4px_16px_rgba(99,102,241,0.18)] hover:border-indigo-400 hover:bg-indigo-100 hover:shadow-[0_6px_20px_rgba(99,102,241,0.28)]"
+                    >
                       <Bot className="size-5" />
                     </Circle>
-                    <Circle ref={searchRef} label="Search">
+                    <Circle
+                      ref={searchRef}
+                      label="Search"
+                      labelClassName="text-teal-700/80 group-hover:text-teal-700 font-semibold"
+                      className="border-teal-200 bg-teal-50 text-teal-600 shadow-[0_4px_16px_rgba(20,184,166,0.18)] hover:border-teal-400 hover:bg-teal-100 hover:shadow-[0_6px_20px_rgba(20,184,166,0.28)]"
+                    >
                       <Search className="size-5" />
                     </Circle>
                   </div>
@@ -290,70 +378,144 @@ export function ProjectDetailPage({ project }: { project: ProjectItem }) {
                   <div className="my-4 flex flex-col items-center md:my-0">
                     <Circle
                       ref={centerCoreRef}
-                      className="size-20 border-[#7d7198]/40 bg-[#f7f4fa] text-[#7d7198] shadow-[0_0_30px_rgba(125,113,152,0.25)]"
+                      className="size-20 border-violet-300 bg-gradient-to-tr from-violet-100 via-purple-50 to-pink-50 text-violet-600 shadow-[0_0_35px_rgba(139,92,246,0.35)] hover:border-violet-400 hover:shadow-[0_0_45px_rgba(139,92,246,0.5)]"
                       label="EduSense Core"
+                      labelClassName="font-semibold text-violet-700"
                     >
-                      <Cpu className="size-8 animate-pulse text-[#7d7198]" />
+                      <Cpu className="size-8 animate-pulse text-violet-600" />
                     </Circle>
                   </div>
 
                   {/* Right Column — 5 Nodes */}
                   <div className="flex flex-row flex-wrap justify-center gap-4 md:flex-col md:items-center md:gap-5">
-                    <Circle ref={quizRef} label="Quizzes">
+                    <Circle
+                      ref={quizRef}
+                      label="Quizzes"
+                      labelClassName="text-rose-700/80 group-hover:text-rose-700 font-semibold"
+                      className="border-rose-200 bg-rose-50 text-rose-600 shadow-[0_4px_16px_rgba(244,63,94,0.18)] hover:border-rose-400 hover:bg-rose-100 hover:shadow-[0_6px_20px_rgba(244,63,94,0.28)]"
+                    >
                       <HelpCircle className="size-5" />
                     </Circle>
-                    <Circle ref={analyticsRef} label="Analytics">
+                    <Circle
+                      ref={analyticsRef}
+                      label="Analytics"
+                      labelClassName="text-blue-700/80 group-hover:text-blue-700 font-semibold"
+                      className="border-blue-200 bg-blue-50 text-blue-600 shadow-[0_4px_16px_rgba(59,130,246,0.18)] hover:border-blue-400 hover:bg-blue-100 hover:shadow-[0_6px_20px_rgba(59,130,246,0.28)]"
+                    >
                       <TrendingUp className="size-5" />
                     </Circle>
-                    <Circle ref={groupRef} label="Groups">
+                    <Circle
+                      ref={groupRef}
+                      label="Groups"
+                      labelClassName="text-purple-700/80 group-hover:text-purple-700 font-semibold"
+                      className="border-purple-200 bg-purple-50 text-purple-600 shadow-[0_4px_16px_rgba(168,85,247,0.18)] hover:border-purple-400 hover:bg-purple-100 hover:shadow-[0_6px_20px_rgba(168,85,247,0.28)]"
+                    >
                       <Users className="size-5" />
                     </Circle>
-                    <Circle ref={authRef} label="Auth">
+                    <Circle
+                      ref={authRef}
+                      label="Auth"
+                      labelClassName="text-emerald-700/80 group-hover:text-emerald-700 font-semibold"
+                      className="border-emerald-200 bg-emerald-50 text-emerald-600 shadow-[0_4px_16px_rgba(16,185,129,0.18)] hover:border-emerald-400 hover:bg-emerald-100 hover:shadow-[0_6px_20px_rgba(16,185,129,0.28)]"
+                    >
                       <ShieldCheck className="size-5" />
                     </Circle>
-                    <Circle ref={notifRef} label="Notifications">
+                    <Circle
+                      ref={notifRef}
+                      label="Notifications"
+                      labelClassName="text-orange-700/80 group-hover:text-orange-700 font-semibold"
+                      className="border-orange-200 bg-orange-50 text-orange-600 shadow-[0_4px_16px_rgba(249,115,22,0.18)] hover:border-orange-400 hover:bg-orange-100 hover:shadow-[0_6px_20px_rgba(249,115,22,0.28)]"
+                    >
                       <Bell className="size-5" />
                     </Circle>
                   </div>
                 </div>
 
-                {/* Curved Animated Beams — Left to Core */}
-                <AnimatedBeam duration={3} curvature={75} pathColor="#c4b8d6" pathOpacity={0.35} pathWidth={2} gradientStartColor="#7d7198" gradientStopColor="#a855f7" containerRef={containerRef} fromRef={taskRef} toRef={centerCoreRef} />
-                <AnimatedBeam duration={3.4} curvature={40} pathColor="#c4b8d6" pathOpacity={0.35} pathWidth={2} gradientStartColor="#7d7198" gradientStopColor="#a855f7" containerRef={containerRef} fromRef={scheduleRef} toRef={centerCoreRef} />
-                <AnimatedBeam duration={3.8} curvature={0} pathColor="#c4b8d6" pathOpacity={0.35} pathWidth={2} gradientStartColor="#7d7198" gradientStopColor="#a855f7" containerRef={containerRef} fromRef={materialRef} toRef={centerCoreRef} />
-                <AnimatedBeam duration={3.2} curvature={-40} pathColor="#c4b8d6" pathOpacity={0.35} pathWidth={2} gradientStartColor="#7d7198" gradientStopColor="#a855f7" containerRef={containerRef} fromRef={assistantRef} toRef={centerCoreRef} />
-                <AnimatedBeam duration={4.2} curvature={-75} pathColor="#c4b8d6" pathOpacity={0.35} pathWidth={2} gradientStartColor="#7d7198" gradientStopColor="#a855f7" containerRef={containerRef} fromRef={searchRef} toRef={centerCoreRef} />
+                {/* Colorful Curved Animated Beams — Left to Core */}
+                <AnimatedBeam duration={3} curvature={75} pathColor="#6ee7b7" pathOpacity={0.45} pathWidth={2} gradientStartColor="#10b981" gradientStopColor="#059669" containerRef={containerRef} fromRef={taskRef} toRef={centerCoreRef} />
+                <AnimatedBeam duration={3.4} curvature={40} pathColor="#7dd3fc" pathOpacity={0.45} pathWidth={2} gradientStartColor="#0284c7" gradientStopColor="#38bdf8" containerRef={containerRef} fromRef={scheduleRef} toRef={centerCoreRef} />
+                <AnimatedBeam duration={3.8} curvature={0} pathColor="#fcd34d" pathOpacity={0.45} pathWidth={2} gradientStartColor="#f59e0b" gradientStopColor="#fbbf24" containerRef={containerRef} fromRef={materialRef} toRef={centerCoreRef} />
+                <AnimatedBeam duration={3.2} curvature={-40} pathColor="#a5b4fc" pathOpacity={0.45} pathWidth={2} gradientStartColor="#6366f1" gradientStopColor="#818cf8" containerRef={containerRef} fromRef={assistantRef} toRef={centerCoreRef} />
+                <AnimatedBeam duration={4.2} curvature={-75} pathColor="#5eead4" pathOpacity={0.45} pathWidth={2} gradientStartColor="#0d9488" gradientStopColor="#2dd4bf" containerRef={containerRef} fromRef={searchRef} toRef={centerCoreRef} />
 
-                {/* Curved Animated Beams — Core to Right */}
-                <AnimatedBeam duration={3.6} curvature={75} pathColor="#c4b8d6" pathOpacity={0.35} pathWidth={2} gradientStartColor="#7d7198" gradientStopColor="#a855f7" containerRef={containerRef} fromRef={centerCoreRef} toRef={quizRef} />
-                <AnimatedBeam duration={4} curvature={40} pathColor="#c4b8d6" pathOpacity={0.35} pathWidth={2} gradientStartColor="#7d7198" gradientStopColor="#a855f7" containerRef={containerRef} fromRef={centerCoreRef} toRef={analyticsRef} />
-                <AnimatedBeam duration={3.3} curvature={0} pathColor="#c4b8d6" pathOpacity={0.35} pathWidth={2} gradientStartColor="#7d7198" gradientStopColor="#a855f7" containerRef={containerRef} fromRef={centerCoreRef} toRef={groupRef} />
-                <AnimatedBeam duration={3.7} curvature={-40} pathColor="#c4b8d6" pathOpacity={0.35} pathWidth={2} gradientStartColor="#7d7198" gradientStopColor="#a855f7" containerRef={containerRef} fromRef={centerCoreRef} toRef={authRef} />
-                <AnimatedBeam duration={4.4} curvature={-75} pathColor="#c4b8d6" pathOpacity={0.35} pathWidth={2} gradientStartColor="#7d7198" gradientStopColor="#a855f7" containerRef={containerRef} fromRef={centerCoreRef} toRef={notifRef} />
+                {/* Colorful Curved Animated Beams — Core to Right */}
+                <AnimatedBeam duration={3.6} curvature={75} pathColor="#fda4af" pathOpacity={0.45} pathWidth={2} gradientStartColor="#f43f5e" gradientStopColor="#fb7185" containerRef={containerRef} fromRef={centerCoreRef} toRef={quizRef} />
+                <AnimatedBeam duration={4} curvature={40} pathColor="#93c5fd" pathOpacity={0.45} pathWidth={2} gradientStartColor="#2563eb" gradientStopColor="#60a5fa" containerRef={containerRef} fromRef={centerCoreRef} toRef={analyticsRef} />
+                <AnimatedBeam duration={3.3} curvature={0} pathColor="#d8b4fe" pathOpacity={0.45} pathWidth={2} gradientStartColor="#9333ea" gradientStopColor="#c084fc" containerRef={containerRef} fromRef={centerCoreRef} toRef={groupRef} />
+                <AnimatedBeam duration={3.7} curvature={-40} pathColor="#86efac" pathOpacity={0.45} pathWidth={2} gradientStartColor="#16a34a" gradientStopColor="#4ade80" containerRef={containerRef} fromRef={centerCoreRef} toRef={authRef} />
+                <AnimatedBeam duration={4.4} curvature={-75} pathColor="#fdba74" pathOpacity={0.45} pathWidth={2} gradientStartColor="#ea580c" gradientStopColor="#fb923c" containerRef={containerRef} fromRef={centerCoreRef} toRef={notifRef} />
               </div>
+            </ScrollReveal>
+
+            {/* Magic UI Spotlight Bento Grid Architecture Breakdown */}
+            <ScrollReveal>
+              <EduSenseBentoStack />
             </ScrollReveal>
           </div>
         </section>
         )}
 
-        {/* Back to Projects CTA */}
-        <section className="section-pad">
+        {/* Impact Metrics & Engineering Challenges — EduSense Only (No dotted background) */}
+        {project.slug === "edusense" && <EduSenseImpactChallenges />}
+
+        {/* Dynamic Next Project Feature Card (Option 1) */}
+        <section className="section-pad pt-4 pb-20">
           <div className="container-pad">
-            <div className="flex flex-col gap-6 rounded-2xl border border-[#d9d3df] bg-white p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
-              <div>
-                <p className="text-xs font-bold uppercase tracking-[0.28em] text-[#7d7198]">
-                  Next Project
-                </p>
-                <h2 className="mt-3 font-display text-2xl font-semibold text-[#24323a]">
-                  Explore more selected work.
-                </h2>
+            <div className="group relative overflow-hidden rounded-2xl border border-[#d9d3df] bg-white/90 p-8 shadow-[0_12px_36px_rgba(36,50,58,0.06)] backdrop-blur-sm transition-all duration-300 hover:border-[#7d7198] hover:shadow-[0_20px_48px_rgba(125,113,152,0.14)] md:p-10">
+              <div className="absolute right-0 top-0 -mr-16 -mt-16 h-64 w-64 rounded-full bg-[#c7ddd4]/40 blur-3xl transition-opacity duration-300 group-hover:opacity-80" />
+
+              <div className="relative z-10 flex flex-col justify-between gap-8 lg:flex-row lg:items-center">
+                <div className="max-w-2xl">
+                  <div className="mb-3 flex items-center gap-3">
+                    <span className="h-px w-8 bg-[#7d7198]" />
+                    <p className="font-mono text-[11px] font-bold uppercase tracking-[0.26em] text-[#7d7198]">
+                      Up Next in Portfolio · {nextProject.category}
+                    </p>
+                  </div>
+
+                  <Link href={`/projects/${nextProject.slug}`} className="group/title inline-block">
+                    <h2 className="font-display text-3xl font-semibold tracking-[-0.03em] text-[#24323a] transition-colors group-hover/title:text-[#7d7198] sm:text-4xl md:text-5xl">
+                      {nextProject.title}
+                      <span className="ml-3 inline-block transition-transform duration-300 group-hover/title:translate-x-2">
+                        →
+                      </span>
+                    </h2>
+                  </Link>
+
+                  <p className="mt-4 text-sm leading-7 text-[#65707a] sm:text-base">
+                    {nextProject.description}
+                  </p>
+
+                  {/* Tech stack badges */}
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    {nextProject.stack.map((tech) => (
+                      <span
+                        key={tech}
+                        className="rounded-md border border-[#d9d3df] bg-[#f7f4fa] px-2.5 py-1 font-mono text-[11px] text-[#65707a]"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Action buttons */}
+                <div className="flex shrink-0 flex-col gap-3 sm:flex-row lg:flex-col">
+                  <Link
+                    href={`/projects/${nextProject.slug}`}
+                    className="inline-flex items-center justify-center gap-2.5 bg-[#c7ddd4] px-7 py-3.5 text-xs font-semibold uppercase tracking-[0.22em] text-[#24323a] shadow-sm transition-all duration-200 hover:bg-[#b5d1c5]"
+                  >
+                    <span>Read Case Study</span>
+                    <ArrowRight size={14} />
+                  </Link>
+                  <Link
+                    href="/#projects"
+                    className="inline-flex items-center justify-center gap-2 border border-[#7d7198]/40 bg-white px-6 py-3.5 text-xs font-semibold uppercase tracking-[0.22em] text-[#7d7198] transition-all duration-200 hover:border-[#24323a] hover:text-[#24323a]"
+                  >
+                    <span>All Projects</span>
+                  </Link>
+                </div>
               </div>
-              <Link
-                href="/#projects"
-                className="inline-flex items-center justify-center rounded-full bg-[#e8e1f1] px-6 py-4 text-sm font-semibold text-[#24323a] transition hover:bg-[#d9d0e7]"
-              >
-                View All Projects
-              </Link>
             </div>
           </div>
         </section>

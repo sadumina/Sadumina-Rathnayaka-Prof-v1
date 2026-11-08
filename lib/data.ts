@@ -78,7 +78,7 @@ export const projects: ProjectItem[] = [
       { title: "Learning Dashboard", description: "A command center for performance metrics, activity, and recommendations." },
       { title: "AI Insight View", description: "A focused view for personalized learning suggestions and student signals." },
     ],
-    githubUrl: "https://github.com/sadumina",
+    githubUrl: "https://github.com/ITPM-Project-EduSense/EduSense.git",
     demoUrl: "#",
   },
   {
