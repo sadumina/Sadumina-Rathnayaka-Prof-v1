@@ -3,7 +3,7 @@
 import Shuffle from "@/components/Shuffle";
 import ShapeGrid from "@/components/ShapeGrid";
 import { skillGroups } from "@/lib/data";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import {
   Atom,
   Bot,

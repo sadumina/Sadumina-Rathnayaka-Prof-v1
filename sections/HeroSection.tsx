@@ -2,7 +2,7 @@
 
 import TechText from "@/components/TechText";
 import LogoLoop from "@/components/LogoLoop";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import {
   ArrowDown,
   ArrowUpRight,

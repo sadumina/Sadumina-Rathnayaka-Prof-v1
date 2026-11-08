@@ -1,6 +1,6 @@
 "use client";
 
-import { useMotionValue, useSpring } from "framer-motion";
+import { useMotionValue, useSpring } from "motion/react";
 import { useEffect } from "react";
 
 export function useMouseParallax(strength = 26) {
