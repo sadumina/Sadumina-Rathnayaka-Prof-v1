@@ -23,6 +23,7 @@ import {
   SiTypescript,
 } from "react-icons/si";
 import Link from "next/link";
+import { PortfolioAppreciationButton } from "@/components/PortfolioAppreciationButton";
 
 const techLogos = [
   { node: <SiReact aria-hidden="true" />, title: "React", href: "https://react.dev", hoverColor: "#61dafb" },
@@ -166,6 +167,9 @@ export function HeroSection() {
               <Download size={16} /> Resume
             </a>
           </motion.div>
+          <div className="mt-4 flex justify-center">
+            <PortfolioAppreciationButton />
+          </div>
         </div>
 
         <div className="mt-10 flex-1 sm:mt-14">
