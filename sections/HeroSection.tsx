@@ -58,10 +58,10 @@ const featuredProjects = [
   {
     title: "Predictive Risk Map",
     cluster: "Research Project",
-    description: "A highly interactive map demo for visualizing predicted landslide and flood-prone areas.",
-    stack: ["JavaScript", "Maps", "Research"],
-    href: "https://github.com/sadumina/Map_cmp.git",
-    external: true,
+    description: "An integrated flood and landslide research project connecting risk mapping to emergency response.",
+    stack: ["Flood & Landslide", "Web GIS", "Decision Support"],
+    href: "/projects/integrated-flood-landslide-risk-response",
+    external: false,
   },
 ];
 

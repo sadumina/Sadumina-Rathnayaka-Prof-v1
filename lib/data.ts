@@ -141,6 +141,35 @@ export const projects: ProjectItem[] = [
     demoUrl: "#",
   },
   {
+    slug: "integrated-flood-landslide-risk-response",
+    title: "Integrated Flood and Landslide Risk Assessment & Response System",
+    category: "Final Year Research · Disaster Risk",
+    description:
+      "A Sri Lanka-focused research prototype connecting flood impact mapping, explainable landslide prediction, GN-level human impact assessment, and hazard-aware emergency response.",
+    stack: ["Python", "Machine Learning", "GeoPandas", "FastAPI", "Web GIS", "OR-Tools"],
+    problem:
+      "Flood and landslide warnings are often fragmented from population vulnerability, local impact estimates, available response resources, and safe routing decisions.",
+    solution:
+      "The research proposes four cooperating components that transform hazard data into explainable human-impact priorities and resource-aware, hazard-conscious response decisions.",
+    impact: [
+      "Connects flood and landslide assessment with human impact and emergency response",
+      "Targets explainable, vulnerability-aware prioritisation at Grama Niladhari division level",
+      "Combines resource allocation with routes that account for hazard-blocked roads",
+    ],
+    features: [
+      "Flood severity assessment and dynamic mapping",
+      "Probabilistic, explainable landslide prediction",
+      "GN-level human impact and decision support",
+      "Resource coordination and hazard-aware routing",
+    ],
+    screenshots: [
+      { title: "Risk Atlas", description: "Demonstration map for viewing flood and landslide risk information." },
+      { title: "Integrated Response Prototype", description: "Prototype experience spanning maps, decision support, and emergency response." },
+    ],
+    githubUrl: "https://github.com/amasha-sinhalagoda/J26-IT-334",
+    demoUrl: "https://map-cmp.vercel.app/",
+  },
+  {
     slug: "clever-campus",
     title: "Clever Campus",
     category: "Campus Management",

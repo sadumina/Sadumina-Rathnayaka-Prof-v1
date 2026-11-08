@@ -4,6 +4,7 @@ declare module "@/components/LogoLoop" {
   type LogoLoopItem = {
     node: ReactNode;
     title?: string;
+    ariaLabel?: string;
     href?: string;
     hoverColor?: string;
   };
@@ -16,6 +17,7 @@ declare module "@/components/LogoLoop" {
     gap?: number;
     hoverSpeed?: number;
     scaleOnHover?: boolean;
+    labels?: "none" | "inline" | "below" | "hover";
     ariaLabel?: string;
     className?: string;
   };

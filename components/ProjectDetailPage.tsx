@@ -17,6 +17,8 @@ import { CarbonXBentoStack } from "@/components/CarbonXBentoStack";
 import { CarbonXImpactChallenges } from "@/components/CarbonXImpactChallenges";
 import { CarbonXInsightDashboard } from "@/components/CarbonXInsightDashboard";
 import { RetinopathyCaseStudy } from "@/components/RetinopathyCaseStudy";
+import { RiskResearchCaseStudy } from "@/components/RiskResearchCaseStudy";
+import LogoLoop from "@/components/LogoLoop";
 import { cn } from "@/lib/utils";
 import type { ProjectItem } from "@/types/portfolio";
 import { projects } from "@/lib/data";
@@ -37,9 +39,21 @@ import {
   Search,
   Cpu,
   Bell,
+  BrainCircuit,
+  ChartNoAxesCombined,
+  GitBranch,
+  Lightbulb,
+  Map,
+  Route,
+  ScanSearch,
 } from "lucide-react";
 import { motion } from "motion/react";
 import Link from "next/link";
+import {
+  SiFastapi,
+  SiGeopandas,
+  SiPython,
+} from "react-icons/si";
 
 // Circle component for AnimatedBeam nodes - Light Themed with vibrant support
 const Circle = forwardRef<
@@ -78,6 +92,121 @@ export function ProjectDetailPage({ project }: { project: ProjectItem }) {
   const currentIndex = projects.findIndex((p) => p.slug === project.slug);
   const nextProject = projects[(currentIndex + 1) % projects.length];
   const isRetinopathy = project.slug === "diabetic-retinopathy-screening";
+  const isRiskResearch = project.slug === "integrated-flood-landslide-risk-response";
+  const researchTechLoop = isRiskResearch
+    ? [
+        {
+          title: "Python",
+          node: (
+            <span className="flex size-8 items-center justify-center border border-[#e8e3eb] bg-white/85 text-[#3776ab]">
+              <SiPython className="size-4" aria-hidden="true" />
+            </span>
+          ),
+          href: "https://www.python.org/",
+          hoverColor: "#3776ab",
+        },
+        {
+          title: "Machine Learning",
+          node: (
+            <span className="flex size-8 items-center justify-center border border-[#e8e3eb] bg-white/85 text-[#7d7198]">
+              <BrainCircuit className="size-4" aria-hidden="true" />
+            </span>
+          ),
+          ariaLabel: "Machine Learning",
+          hoverColor: "#7d7198",
+        },
+        {
+          title: "GeoPandas",
+          node: (
+            <span className="flex size-8 items-center justify-center border border-[#e8e3eb] bg-white/85 text-[#139c5a]">
+              <SiGeopandas className="size-4" aria-hidden="true" />
+            </span>
+          ),
+          href: "https://geopandas.org/",
+          hoverColor: "#139c5a",
+        },
+        {
+          title: "FastAPI",
+          node: (
+            <span className="flex size-8 items-center justify-center border border-[#e8e3eb] bg-white/85 text-[#009688]">
+              <SiFastapi className="size-4" aria-hidden="true" />
+            </span>
+          ),
+          href: "https://fastapi.tiangolo.com/",
+          hoverColor: "#009688",
+        },
+        {
+          title: "Web GIS",
+          node: (
+            <span className="flex size-8 items-center justify-center border border-[#e8e3eb] bg-white/85 text-[#527c69]">
+              <Map className="size-4" aria-hidden="true" />
+            </span>
+          ),
+          ariaLabel: "Web GIS",
+          hoverColor: "#527c69",
+        },
+        {
+          title: "OR-Tools",
+          node: (
+            <span className="flex size-8 items-center justify-center border border-[#e8e3eb] bg-white/85 text-[#4285f4]">
+              <Route className="size-4" aria-hidden="true" />
+            </span>
+          ),
+          ariaLabel: "Google OR-Tools",
+          hoverColor: "#4285f4",
+        },
+        {
+          title: "Logistic Regression",
+          node: (
+            <span className="flex size-8 items-center justify-center border border-[#e8e3eb] bg-white/85 text-[#75658f]">
+              <ChartNoAxesCombined className="size-4" aria-hidden="true" />
+            </span>
+          ),
+          ariaLabel: "Logistic Regression",
+          hoverColor: "#75658f",
+        },
+        {
+          title: "XGBoost",
+          node: (
+            <span className="flex size-8 items-center justify-center border border-[#e8e3eb] bg-white/85 text-[#2f7e70]">
+              <GitBranch className="size-4" aria-hidden="true" />
+            </span>
+          ),
+          ariaLabel: "XGBoost",
+          hoverColor: "#2f7e70",
+        },
+        {
+          title: "LightGBM",
+          node: (
+            <span className="flex size-8 items-center justify-center border border-[#e8e3eb] bg-white/85 text-[#a66e4d]">
+              <GitBranch className="size-4" aria-hidden="true" />
+            </span>
+          ),
+          ariaLabel: "LightGBM",
+          hoverColor: "#a66e4d",
+        },
+        {
+          title: "SHAP",
+          node: (
+            <span className="flex size-8 items-center justify-center border border-[#e8e3eb] bg-white/85 text-[#59739b]">
+              <ScanSearch className="size-4" aria-hidden="true" />
+            </span>
+          ),
+          ariaLabel: "SHAP explainability",
+          hoverColor: "#59739b",
+        },
+        {
+          title: "LIME",
+          node: (
+            <span className="flex size-8 items-center justify-center border border-[#e8e3eb] bg-white/85 text-[#c88769]">
+              <Lightbulb className="size-4" aria-hidden="true" />
+            </span>
+          ),
+          ariaLabel: "LIME explainability",
+          hoverColor: "#c88769",
+        },
+      ]
+    : [];
 
   // AnimatedBeam node references
   const centerCoreRef = useRef<HTMLDivElement>(null);
@@ -108,7 +237,7 @@ export function ProjectDetailPage({ project }: { project: ProjectItem }) {
               Back to Projects
             </Link>
 
-            {project.slug === "edusense" || project.slug === "carbonxinsight" || isRetinopathy ? (
+            {project.slug === "edusense" || project.slug === "carbonxinsight" || isRetinopathy || isRiskResearch ? (
               <div className="flex flex-col items-center justify-center pt-2 text-center">
                 {/* Category & Status Pill */}
                 <motion.div
@@ -127,7 +256,7 @@ export function ProjectDetailPage({ project }: { project: ProjectItem }) {
                 </motion.div>
 
                 {/* Formal Decrypted Title */}
-                <h1 className="font-display text-5xl font-bold tracking-[-0.04em] text-[#24323a] sm:text-7xl lg:text-8xl">
+                <h1 className={`font-display font-bold tracking-[-0.04em] text-[#24323a] ${isRiskResearch ? "max-w-5xl text-4xl sm:text-6xl lg:text-7xl" : "text-5xl sm:text-7xl lg:text-8xl"}`}>
                   <DecryptedText
                     text={project.title}
                     speed={60}
@@ -140,6 +269,27 @@ export function ProjectDetailPage({ project }: { project: ProjectItem }) {
                   />
                 </h1>
 
+                {isRiskResearch && (
+                  <div className="mt-5 w-full">
+                    <p className="mb-2 font-mono text-[9px] font-semibold uppercase tracking-[0.2em] text-[#8b9291]">
+                      Technology & methods
+                    </p>
+                    <div className="w-full overflow-hidden border border-[#e8e3eb] bg-white/55 py-2">
+                      <LogoLoop
+                        logos={researchTechLoop}
+                        speed={44}
+                        direction="left"
+                        logoHeight={32}
+                        gap={24}
+                        hoverSpeed={0}
+                        scaleOnHover
+                        labels="hover"
+                        ariaLabel="Research project technologies and methods"
+                      />
+                    </div>
+                  </div>
+                )}
+
                 {/* Subtitle with subtle accent rules */}
                 <div className="mt-3 flex items-center justify-center gap-3">
                   <span className="h-px w-8 bg-[#7d7198]/40 sm:w-12" />
@@ -148,7 +298,9 @@ export function ProjectDetailPage({ project }: { project: ProjectItem }) {
                       ? "Coconut shell charcoal market price analytics"
                       : isRetinopathy
                         ? "Automated retinal fundus image severity classification"
-                        : "AI-powered student productivity platform"}
+                        : isRiskResearch
+                          ? "Integrated multi-hazard risk assessment and emergency response"
+                          : "AI-powered student productivity platform"}
                   </p>
                   <span className="h-px w-8 bg-[#7d7198]/40 sm:w-12" />
                 </div>
@@ -167,7 +319,9 @@ export function ProjectDetailPage({ project }: { project: ProjectItem }) {
                         ? "Software Engineering Intern"
                         : isRetinopathy
                           ? "Deep Learning Team"
-                          : "Full-Stack & AI"}
+                          : isRiskResearch
+                            ? "Team Research Project"
+                            : "Full-Stack & AI"}
                     </p>
                   </div>
                   <div className="px-4 py-2 text-center">
@@ -177,7 +331,9 @@ export function ProjectDetailPage({ project }: { project: ProjectItem }) {
                         ? "FastAPI · React 19 · MongoDB"
                         : isRetinopathy
                           ? "Python · TensorFlow · PyTorch"
-                          : "Next.js 16 · FastAPI · MongoDB"}
+                          : isRiskResearch
+                            ? "Python · GIS · Machine Learning"
+                            : "Next.js 16 · FastAPI · MongoDB"}
                     </p>
                   </div>
                   <div className="px-4 py-2 text-center">
@@ -186,14 +342,18 @@ export function ProjectDetailPage({ project }: { project: ProjectItem }) {
                         ? "Analytics Engine"
                         : isRetinopathy
                           ? "Model Comparison"
-                          : "AI Pipeline"}
+                          : isRiskResearch
+                            ? "Research Components"
+                            : "AI Pipeline"}
                     </p>
                     <p className="text-xs font-semibold text-[#24323a]">
                       {project.slug === "carbonxinsight"
                         ? "Highstock · pdfplumber"
                         : isRetinopathy
                           ? "4 CNN Architectures"
-                          : "Gemini + Groq LPU"}
+                          : isRiskResearch
+                            ? "Flood · Landslide · Response"
+                            : "Gemini + Groq LPU"}
                     </p>
                   </div>
                   <div className="px-4 py-2 text-center">
@@ -205,7 +365,9 @@ export function ProjectDetailPage({ project }: { project: ProjectItem }) {
                         ? "Haycarb PLC"
                         : isRetinopathy
                           ? "In Progress"
-                          : "Production Ready"}
+                          : isRiskResearch
+                            ? "Active Research"
+                            : "Production Ready"}
                     </p>
                   </div>
                 </motion.div>
@@ -294,10 +456,10 @@ export function ProjectDetailPage({ project }: { project: ProjectItem }) {
                 <div className="relative overflow-hidden rounded-2xl border border-[#d9d3df] bg-white p-5 shadow-[10px_10px_0_rgba(70,58,86,0.08)]">
                   <div className="absolute right-0 top-0 h-48 w-48 translate-x-12 -translate-y-12 rounded-full bg-[#e8e1f1] blur-3xl" />
                   <div className="relative aspect-[16/10] overflow-hidden rounded-xl border border-[#d9d3df] bg-[#f7f4fa]">
-                    {isRetinopathy ? (
+                    {isRetinopathy || isRiskResearch ? (
                       <Image
-                        src="/project-retinopathy.svg"
-                        alt="Illustration of the diabetic retinopathy screening project"
+                        src={isRetinopathy ? "/project-retinopathy.svg" : "/project-risk-map.svg"}
+                        alt={`Illustration of ${project.title}`}
                         fill
                         priority
                         sizes="(max-width: 1024px) 100vw, 50vw"
@@ -543,6 +705,7 @@ export function ProjectDetailPage({ project }: { project: ProjectItem }) {
         )}
 
         {isRetinopathy && <RetinopathyCaseStudy project={project} />}
+        {isRiskResearch && <RiskResearchCaseStudy project={project} />}
 
         {/* Dynamic Next Project Feature Card */}
         <section className="section-pad pt-4 pb-20">
